@@ -1,40 +1,35 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
-// ÇÃ·¹ÀÌ¾î ÀÌµ¿
+// í”Œë ˆì´ì–´ ì´ë™
 public class PlayerMove : MonoBehaviour
 {
     private Camera _mainCamera;
 
-    [Header("ÀÌµ¿ ¹üÀ§")]
-    private float _maxX;
-    private float _minX;
-    private float _maxY;
-    private float _minY;
+    [Header("ì´ë™ ë²”ìœ„")]
+    [SerializeField] private float _maxX;
+    [SerializeField] private float _minX;
+    [SerializeField] private float _maxY;
+    [SerializeField] private float _minY;
 
-    [Header("ÀÌµ¿ ¼Óµµ")]
-    public float Speed = 7f;
-    private float _originSpeed = 3f;
-    private float _maxSpeed = 10f;
-    private float _minSpeed = 1f;
-    private float _speedAcceleration = 1.2f;
-    private float _speedIncrement = 1f;
+    [Header("ì´ë™ ì†ë„")]
+    public float Speed;
+    [SerializeField] private float _originSpeed;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _minSpeed;
+    [SerializeField] private float _speedAcceleration;
+    [SerializeField] private float _speedIncrement;
 
-    [Header("ÀÌµ¿ ¹æÇâ")]
+    [Header("ì´ë™ ë°©í–¥")]
     private Vector2 _direction;
     private Vector2 _newPosition;
     private Vector2 _position;
-    private Vector2 _originPos;
+    private Vector2 _originPosition;
 
     private void Start()
     {
         _mainCamera = Camera.main;
-        _originPos = transform.position;
-        Speed = 7f;
-        _maxX = 1f;
-        _minX = 0f;
-        _maxY = 0.5f;
-        _minY = 0f;
+        _originPosition = transform.position;
     }
 
     private void Update()
@@ -44,9 +39,14 @@ public class PlayerMove : MonoBehaviour
         Inside();
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     private void GetSpeed()
     {
-        // Q , E Å°·Î ¼Óµµ Á¶Àı, Shift Å°·Î °¡¼Ó
+        // Q , E í‚¤ë¡œ ì†ë„ ì¡°ì ˆ, Shift í‚¤ë¡œ ê°€ì†
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _originSpeed += _speedIncrement;
@@ -65,35 +65,35 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    // Å°º¸µå ÀÔ·Â¿¡ µû¶ó ¹æÇâÀ» ±¸ÇÏ°í ±× ¹æÇâÀ¸·Î ÀÌµ¿
+    // í‚¤ë³´ë“œ ì…ë ¥ì— ë”°ë¼ ë°©í–¥ì„ êµ¬í•˜ê³  ê·¸ ë°©í–¥ìœ¼ë¡œ ì´ë™
     private void Move()
     {
-        // 1, Å°º¸µå ÀÔ·ÂÀ» °¨ÁöÇÑ´Ù.
-        //float h = Input.GetAxisRaw("Horizontal");  // ¼öÆò ÀÔ·Â¿¡ ´ëÇÑ °ªÀ» -1 ~ 1 ·Î °¡Á®¿Â´Ù.
-        // float v = Input.GetAxisRaw("Vertical");    // ¼öÁ÷ ÀÔ·Â¿¡ ´ëÇÑ °ªÀ» -1 ~ 1 ·Î °¡Á®¿Â´Ù.
+        // 1, í‚¤ë³´ë“œ ì…ë ¥ì„ ê°ì§€í•œë‹¤.
+        //float h = Input.GetAxisRaw("Horizontal");  // ìˆ˜í‰ ì…ë ¥ì— ëŒ€í•œ ê°’ì„ -1 ~ 1 ë¡œ ê°€ì ¸ì˜¨ë‹¤.
+        // float v = Input.GetAxisRaw("Vertical");    // ìˆ˜ì§ ì…ë ¥ì— ëŒ€í•œ ê°’ì„ -1 ~ 1 ë¡œ ê°€ì ¸ì˜¨ë‹¤.
 
-        // 2, ÀÔ·ÂÀ¸·ÎºÎÅÍ ¹æÇâÀ» ±¸ÇÑ´Ù.
+        // 2, ì…ë ¥ìœ¼ë¡œë¶€í„° ë°©í–¥ì„ êµ¬í•œë‹¤.
         //Vector2 direction = new Vector2(h, v);
 
         _direction.x = Input.GetAxisRaw("Horizontal");
         _direction.y = Input.GetAxisRaw("Vertical");
 
-        // ´ë°¢¼±À¸·Î ÀÌµ¿ÇÒ °æ¿ì ¼Óµµ°¡ »¡¶óÁö´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇØ ¹æÇâ º¤ÅÍÀÇ Å©±â¸¦ 1·Î Á¤±ÔÈ­
+        // ëŒ€ê°ì„ ìœ¼ë¡œ ì´ë™í•  ê²½ìš° ì†ë„ê°€ ë¹¨ë¼ì§€ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•´ ë°©í–¥ ë²¡í„°ì˜ í¬ê¸°ë¥¼ 1ë¡œ ì •ê·œí™”
         _direction.Normalize();
 
-        // 3. ±¸ÇÑ ¹æÇâÀ¸·Î ÀÌµ¿ÇÑ´Ù.
+        // 3. êµ¬í•œ ë°©í–¥ìœ¼ë¡œ ì´ë™í•œë‹¤.
         _position = transform.position;
 
 
-        // R Å°¸¦ ´©¸£¸é ¿ø·¡ À§Ä¡·Î µ¹¾Æ°¨
-        // Translate¸¦ »ç¿ëÇÏ¸é °£´ÜÇÏÁö¸¸ Á¤¹Ğµµ ¶³¾îÁü
+        // R í‚¤ë¥¼ ëˆ„ë¥´ë©´ ì›ë˜ ìœ„ì¹˜ë¡œ ëŒì•„ê°
+        // Translateë¥¼ ì‚¬ìš©í•˜ë©´ ê°„ë‹¨í•˜ì§€ë§Œ ì •ë°€ë„ ë–¨ì–´ì§
         if (Input.GetKey(KeyCode.R))
         {
-            transform.Translate((_originPos - _position) * Speed * Time.deltaTime);
+            transform.Translate((_originPosition - _position) * Speed * Time.deltaTime);
         }
 
-        // »õ·Î¿î À§Ä¡ = ÇöÀç À§Ä¡ +     ¼Óµµ      * ½Ã°£
-        // »õ·Î¿î À§Ä¡ = ÇöÀç À§Ä¡ + (¹æÇâ * ¼Ó·Â) * ½Ã°£
+        // ìƒˆë¡œìš´ ìœ„ì¹˜ = í˜„ì¬ ìœ„ì¹˜ +     ì†ë„      * ì‹œê°„
+        // ìƒˆë¡œìš´ ìœ„ì¹˜ = í˜„ì¬ ìœ„ì¹˜ + (ë°©í–¥ * ì†ë ¥) * ì‹œê°„
         else
         {
             _newPosition = _position + _direction * Speed * Time.deltaTime;
@@ -103,9 +103,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Inside()
     {
-        // È­¸é ¹ÛÀ¸·Î ³ª°¡Áö ¾Êµµ·Ï À§Ä¡ Á¦ÇÑ
+        // í™”ë©´ ë°–ìœ¼ë¡œ ë‚˜ê°€ì§€ ì•Šë„ë¡ ìœ„ì¹˜ ì œí•œ
         Vector3 viewPos = _mainCamera.WorldToViewportPoint(transform.position);
-        viewPos.x = Mathf.Clamp(viewPos.x, _minX, _maxX);
+        if (viewPos.x < _minX) viewPos.x = _maxX;
+        if (viewPos.x > _maxX) viewPos.x = _minX;
         viewPos.y = Mathf.Clamp(viewPos.y, _minY, _maxY);
         transform.position = _mainCamera.ViewportToWorldPoint(viewPos);
     }
