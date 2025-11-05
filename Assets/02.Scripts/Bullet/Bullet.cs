@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,18 +11,27 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _speedAcceleration;
-    [SerializeField] private float _timer;
-    [SerializeField] private float _deltaTime;
     [SerializeField] private float _zeroSpeed;
 
-    private Quaternion _originRoation;
+    private float _timer;
+    private float _deltaTime;
+
+    [Header("공격력")]
+    [SerializeField] private float _damage;
+    [SerializeField] private float _criticalRate;
+
+    private Quaternion _originRotation;
     private Quaternion _flipedRotation;
+    private float _originAngle;
+    private float _flipedAngle;
+    private const float _lerpAngle = 180f;
 
     private void Start()
     {
-        _originRoation = transform.rotation;
-        _flipedRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z * -1f);
-        SetMoveS();
+        //_originRotation = transform.rotation;
+        //_flipedRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + 180f);
+        _originAngle = transform.rotation.eulerAngles.z;
+        _flipedAngle = _originAngle > _lerpAngle ? _originAngle + _lerpAngle : _originAngle - _lerpAngle;
     }
 
     private void FixedUpdate()
@@ -29,10 +39,21 @@ public class Bullet : MonoBehaviour
         _deltaTime = Time.deltaTime;
         _timer += _deltaTime;
 
-        MoveS();
+        Move();
 
         // 보고 있는 방향으로 이동
         _rigidbody2D.linearVelocity = transform.up * _speed;
+    }
+
+    private void Move()
+    {
+        _timer = Mathf.Min(_timer, _zeroSpeed);
+
+        // 등가속 운동
+        _speed = _minSpeed + (_maxSpeed - _minSpeed) * (_timer / _zeroSpeed);
+
+        // 180도 회전 보간
+        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Lerp(_originAngle, _flipedAngle, _timer / _zeroSpeed));
     }
 
 
@@ -67,7 +88,7 @@ public class Bullet : MonoBehaviour
     private void MoveS()
     {
         // 회전 보간
-        transform.rotation = Quaternion.Lerp(_originRoation, _flipedRotation, _timer / _zeroSpeed);
+        transform.rotation = Quaternion.Lerp(_originRotation, _flipedRotation, _timer / _zeroSpeed);
 
         // 일정 시간마다 방향 전환
         if (_timer >= _zeroSpeed) Filp();
@@ -85,8 +106,18 @@ public class Bullet : MonoBehaviour
 
     private void Filp()
     {
-        (_originRoation, _flipedRotation) = (_flipedRotation, _originRoation);
-        //_timer = 0f;
+        (_originRotation, _flipedRotation) = (_flipedRotation, _originRotation);
+        _timer = 0f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy") == false) return; // 코드를 간결하게 만드는 조기 리턴
+        EnemyHit enemy = collision.GetComponent<EnemyHit>();
+
+        bool critical = Random.value < _criticalRate;
+        enemy.TakeDamage(_damage, critical);
+        Destroy(gameObject);
     }
 
 }
