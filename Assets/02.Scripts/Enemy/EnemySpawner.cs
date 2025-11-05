@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [Header("몬스터 프리팹")]
     [SerializeField] private GameObject _enemyPrefab;

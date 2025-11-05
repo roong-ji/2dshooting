@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHit : MonoBehaviour
+public class EnemyHitbox : MonoBehaviour
 {
 
     [Header("데미지 비율")]
