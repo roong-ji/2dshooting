@@ -11,6 +11,8 @@ public class EnemySpawn : MonoBehaviour
 
     [Header("스폰 간격")]
     [SerializeField] private float _spawnInterval;
+    [SerializeField] private float _minSpawnInterval;
+    [SerializeField] private float _maxSpawnInterval;
     private float _timer = 0f;
 
     private void Update()
@@ -30,6 +32,6 @@ public class EnemySpawn : MonoBehaviour
         pos.x = Random.Range(_minSpawnX, _maxSpawnX);
         enemy.transform.position = pos;
 
-        _spawnInterval = Random.Range(1f, 3f);
+        _spawnInterval = Random.Range(_minSpawnInterval, _maxSpawnInterval);
     }
 }
