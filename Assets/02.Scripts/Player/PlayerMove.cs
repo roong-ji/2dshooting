@@ -1,12 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
 // 플레이어 이동
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : MovementComponent
 {
     private Camera _mainCamera;
-    [SerializeField] private Rigidbody2D _rigidbody2D;
 
     [Header("현재 위치")]
     public Vector2 Position => _position;
@@ -25,8 +23,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _speedAcceleration;
     [SerializeField] private float _speedIncrement;
 
-    [Header("이동 방향")]
-    private Vector2 _direction;
     private Vector2 _position;
     private Vector2 _originPosition;
 
@@ -41,11 +37,6 @@ public class PlayerMove : MonoBehaviour
         GetSpeed();
         GetDirection();
         Inside();
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
     }
 
     private void GetSpeed()
@@ -87,7 +78,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void Move()
+    protected override void Move()
     {
         // 3. 구한 방향으로 이동한다.
         _rigidbody2D.linearVelocity = _direction * Speed;

@@ -1,9 +1,13 @@
 using UnityEngine;
 
-public class ChaseMovementComponent : EnemyMovementComponent
+public class ChaseMovementComponent : MovementComponent
 {
     [SerializeField] private Transform _playerTransform;
     private Vector2 _directionToPlayer;
+
+    private float _timer = 0f;
+    private float _knockbackDuration = 0.5f;
+    private bool _isKnockback = false;
 
     private void Start()
     {
@@ -21,11 +25,13 @@ public class ChaseMovementComponent : EnemyMovementComponent
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(_directionToPlayer.y, _directionToPlayer.x) * Mathf.Rad2Deg);
 
         // 설정된 방향으로 이동
-        _direction = transform.right;
+        KnockbackMove();
         _rigidbody2D.linearVelocity = _direction * _speed;
     }
-    protected override void KnockbackMove()
+    private void KnockbackMove()
     {
+        _direction = transform.right;
+
         if (_isKnockback == false) return;
 
         _timer += Time.fixedDeltaTime;
@@ -38,5 +44,10 @@ public class ChaseMovementComponent : EnemyMovementComponent
         }
 
         _direction = Vector2.Lerp(_direction, Vector2.zero, _timer / _knockbackDuration);
+    }
+    public override void Knockback()
+    {
+        _isKnockback = true;
+        _direction = -_direction;
     }
 }

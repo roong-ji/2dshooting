@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -32,8 +32,9 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         int enemyType = Random.value < _spawnChance[0] ? 0 : 1;
-        enemyType = Random.value < _spawnChance[1] ? 1 : 2;
+        enemyType = Random.value < _spawnChance[1] ? enemyType : 2;
         GameObject enemy = Instantiate(_enemyPrefab[enemyType]);
+
         Vector3 pos = enemy.transform.position;
         pos.x = Random.Range(_minSpawnX, _maxSpawnX);
         enemy.transform.position = pos;

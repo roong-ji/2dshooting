@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8465870908128774742}
   - component: {fileID: 4574282418944773859}
   - component: {fileID: 3214394383752733263}
+  - component: {fileID: -8909316737204028752}
   - component: {fileID: 2194895188563600720}
   - component: {fileID: 4640807719396680093}
   m_Layer: 0
@@ -104,7 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27a908345085d49805718682181a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _healthComponent: {fileID: -8909316737204028752}
+  _movementComponent: {fileID: 2194895188563600720}
 --- !u!50 &4574282418944773859
 Rigidbody2D:
   serializedVersion: 5
@@ -141,12 +143,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1816798911127756622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
+  m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 1
-  _enemy: {fileID: 8465870908128774742}
-  _enemyMovementComponet: {fileID: 2194895188563600720}
+--- !u!114 &-8909316737204028752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816798911127756622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!114 &2194895188563600720
 MonoBehaviour:
   m_ObjectHideFlags: 0

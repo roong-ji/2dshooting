@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 8747473042079472142}
   - component: {fileID: 5350554743939198428}
   - component: {fileID: 7808707903834832716}
-  - component: {fileID: 6284592026373814795}
   - component: {fileID: -5031708002172254640}
+  - component: {fileID: 8937453123069356470}
+  - component: {fileID: -613797259271077554}
   - component: {fileID: 1613313987362607262}
+  - component: {fileID: 6142634932142136709}
   m_Layer: 0
   m_Name: EnemyCharge
   m_TagString: Enemy
@@ -174,21 +176,6 @@ PolygonCollider2D:
       - {x: 0.5, y: 0}
       - {x: 0.25, y: 0.43359375}
   m_UseDelaunayMesh: 0
---- !u!114 &6284592026373814795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368801934644374789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageRate: 1
-  _enemy: {fileID: -5031708002172254640}
-  _enemyMovementComponet: {fileID: 1613313987362607262}
 --- !u!114 &-5031708002172254640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +186,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c27a908345085d49805718682181a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthComponent: {fileID: -613797259271077554}
+  _movementComponent: {fileID: 1613313987362607262}
+--- !u!114 &8937453123069356470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368801934644374789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageRate: 1
+--- !u!114 &-613797259271077554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368801934644374789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
@@ -215,8 +229,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 5350554743939198428}
-  _speed: 3
+  _speed: 2.5
   _direction: {x: 0, y: -1}
+--- !u!114 &6142634932142136709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368801934644374789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4bf856c05fab24185a946229e879d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 8394241573982857948, guid: 4b4df071b53079b4faac3bb4c4e1fd06, type: 3}
+  _firePositionLeft: {fileID: 4841507379498257535}
+  _firePositionRight: {fileID: 6341783732567875944}
+  _leftRotation: {x: 0, y: 0, z: 0, w: 0}
+  _rightRotation: {x: 0, y: 0, z: 0, w: 0}
+  _fireRate: 1
 --- !u!1 &3251924264269729674
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,12 +383,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3251924264269729674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
+  m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 0.5
-  _enemy: {fileID: -5031708002172254640}
-  _enemyMovementComponet: {fileID: 1613313987362607262}
 --- !u!1 &4784988977449655084
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,9 +521,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4784988977449655084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
+  m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 0.5
-  _enemy: {fileID: -5031708002172254640}
-  _enemyMovementComponet: {fileID: 1613313987362607262}
