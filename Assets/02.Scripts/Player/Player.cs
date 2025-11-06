@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("ÇÃ·¹ÀÌ¾î Ã¼·Â")]
+    [Header("í”Œë ˆì´ì–´ ì²´ë ¥")]
     [SerializeField] private float _health;
 
     public void TakeDamage(float damage)

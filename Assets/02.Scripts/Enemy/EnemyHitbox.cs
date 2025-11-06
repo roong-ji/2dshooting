@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class EnemyHitbox : MonoBehaviour
 {
 
-    [Header("µ¥¹ÌÁö ºñÀ²")]
+    [Header("ë°ë¯¸ì§€ ë¹„ìœ¨")]
     [SerializeField] private float damageRate;
 
     [SerializeField] private Enemy _enemy;
@@ -16,8 +16,8 @@ public class EnemyHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if (collision.gameObject.name == "Player") ¿ÀÅ¸¿¡ Ãë¾à!!
-        if (collision.gameObject.CompareTag("Player") == false) return; // ÄÚµå¸¦ °£°áÇÏ°Ô ¸¸µå´Â Á¶±â ¸®ÅÏ
+        // if (collision.gameObject.name == "Player") ì˜¤íƒ€ì— ì·¨ì•½!!
+        if (collision.gameObject.CompareTag("Player") == false) return; // ì½”ë“œë¥¼ ê°„ê²°í•˜ê²Œ ë§Œë“œëŠ” ì¡°ê¸° ë¦¬í„´
         collision.gameObject.GetComponent<Player>().TakeDamage(1f);
         Destroy(gameObject);
     }

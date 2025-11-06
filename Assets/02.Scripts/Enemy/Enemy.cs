@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
 
-    [Header("½ºÅÈ")]
+    [Header("ìŠ¤íƒ¯")]
     public float _health;
 
     public void TakeDamage(float damage)

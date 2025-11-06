@@ -9,17 +9,32 @@ public class EvadeMovementComponent : EnemyMovementComponent
 
     protected override void Move()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, _evadeDistance, _playerBulletLayer);
+        // 플레이어의 총알이 일정 거리 내에 있으면 회피 동작 수행
+        if (Physics2D.Raycast(transform.position, _direction, _evadeDistance, _playerBulletLayer)) Evade();
 
-        if(hit) Evade();
-
-        _rigidbody2D.linearVelocity = Direction * Speed;
+        _rigidbody2D.linearVelocity = _direction * _speed;
     }
 
     private void Evade()
     {
         _isKnockback = true;
-        Direction = Random.value > _directionRate ? _evadeVector[0] : _evadeVector[1];
+        _direction = Random.value > _directionRate ? _evadeVector[0] : _evadeVector[1];
+    }
+    protected override void KnockbackMove()
+    {
+        if (_isKnockback == false) return;
+
+        _timer += Time.fixedDeltaTime;
+
+        if (_timer >= _knockbackDuration)
+        {
+            _isKnockback = false;
+            _timer = 0f;
+            _direction = Vector2.down;
+            return;
+        }
+
+        _direction = Vector2.Lerp(_direction, Vector2.zero, _timer / _knockbackDuration);
     }
 
 }

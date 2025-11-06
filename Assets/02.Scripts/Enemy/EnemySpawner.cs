@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("¸ó½ºÅÍ ÇÁ¸®ÆÕ")]
+    [Header("ëª¬ìŠ¤í„° í”„ë¦¬íŒ¹")]
     [SerializeField] private GameObject[] _enemyPrefab;
 
-    [Header("½ºÆù È®·ü")]
+    [Header("ìŠ¤í° í™•ë¥ ")]
     [SerializeField] private float[] _spawnChance;
 
-    [Header("½ºÆù ¹üÀ§")]
+    [Header("ìŠ¤í° ë²”ìœ„")]
     [SerializeField] private float _minSpawnX;
     [SerializeField] private float _maxSpawnX;
 
-    [Header("½ºÆù °£°İ")]
+    [Header("ìŠ¤í° ê°„ê²©")]
     [SerializeField] private float _spawnInterval;
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
