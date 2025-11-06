@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6402682727866383865}
   - component: {fileID: 8747473042079472142}
-  - component: {fileID: 3753435427933387820}
   - component: {fileID: 5350554743939198428}
   - component: {fileID: 7808707903834832716}
-  - component: {fileID: 50246415313322910}
+  - component: {fileID: 6284592026373814795}
+  - component: {fileID: -5031708002172254640}
+  - component: {fileID: 1613313987362607262}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyCharge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,22 +94,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3753435427933387820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368801934644374789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea7babc50902ce47a04f68c052ad3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 5350554743939198428}
-  _speed: 2.5
-  _knockBackSpeed: 10
-  _isKnockBack: 0
 --- !u!50 &5350554743939198428
 Rigidbody2D:
   serializedVersion: 5
@@ -143,7 +128,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368801934644374789}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -189,7 +174,7 @@ PolygonCollider2D:
       - {x: 0.5, y: 0}
       - {x: 0.25, y: 0.43359375}
   m_UseDelaunayMesh: 0
---- !u!114 &50246415313322910
+--- !u!114 &6284592026373814795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,11 +183,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 2368801934644374789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9c53ccd55a8f54aa8a7292388248f4, type: 3}
+  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 1
-  _enemy: {fileID: 3753435427933387820}
+  _enemy: {fileID: -5031708002172254640}
+  _enemyMovementComponet: {fileID: 1613313987362607262}
+--- !u!114 &-5031708002172254640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368801934644374789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c27a908345085d49805718682181a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+--- !u!114 &1613313987362607262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368801934644374789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a226e10325b2af44adf3abf6bc3cbf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 5350554743939198428}
+  _speed: 3
+  _direction: {x: 0, y: -1}
 --- !u!1 &3251924264269729674
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +228,7 @@ GameObject:
   - component: {fileID: 6341783732567875944}
   - component: {fileID: 8841986041628209846}
   - component: {fileID: 3278223377764352189}
-  - component: {fileID: 3418502608752515300}
+  - component: {fileID: 6905404248507700800}
   m_Layer: 0
   m_Name: RightArm
   m_TagString: Enemy
@@ -328,7 +342,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &3418502608752515300
+--- !u!114 &6905404248507700800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,11 +351,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3251924264269729674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9c53ccd55a8f54aa8a7292388248f4, type: 3}
+  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 0.5
-  _enemy: {fileID: 3753435427933387820}
+  _enemy: {fileID: -5031708002172254640}
+  _enemyMovementComponet: {fileID: 1613313987362607262}
 --- !u!1 &4784988977449655084
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +368,7 @@ GameObject:
   - component: {fileID: 4841507379498257535}
   - component: {fileID: 1433759482673289036}
   - component: {fileID: 729818490865757612}
-  - component: {fileID: 903506710698914221}
+  - component: {fileID: 4004250302132219796}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Enemy
@@ -467,7 +482,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &903506710698914221
+--- !u!114 &4004250302132219796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,8 +491,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4784988977449655084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9c53ccd55a8f54aa8a7292388248f4, type: 3}
+  m_Script: {fileID: 11500000, guid: d839c40593c027940b24d72fffd2297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 0.5
-  _enemy: {fileID: 3753435427933387820}
+  _enemy: {fileID: -5031708002172254640}
+  _enemyMovementComponet: {fileID: 1613313987362607262}

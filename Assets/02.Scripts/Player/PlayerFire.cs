@@ -16,7 +16,9 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] private Quaternion _rightRotation;
 
     private float _timer = 0f;
-    private float _fireRate = 0.6f;
+
+    [Header("공격 속도")]
+    [SerializeField] private float _fireRate;
 
     private int _bulletType = 0; // 현재 총알 종류
     private int _typeNumber = 2; // 총알 종류 개수

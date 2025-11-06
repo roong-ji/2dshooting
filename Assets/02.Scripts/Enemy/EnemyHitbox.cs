@@ -7,10 +7,11 @@ public class EnemyHitbox : MonoBehaviour
     [SerializeField] private float damageRate;
 
     [SerializeField] private Enemy _enemy;
+    [SerializeField] private EnemyMovementComponent _enemyMovementComponet;
     public void TakeDamage(float damage, bool critical)
     {
         _enemy.TakeDamage(damage * damageRate);
-        if(critical) _enemy.KnockBack();
+        if(critical) _enemyMovementComponet.Knockback();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

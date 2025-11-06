@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4024585309936715600}
   - component: {fileID: 1071374221220725440}
   - component: {fileID: 7168327065151351364}
+  - component: {fileID: -5076665077999212980}
   - component: {fileID: 8989620595762632791}
   - component: {fileID: 1782883671453905830}
   m_Layer: 0
-  m_Name: Buillet
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,13 +105,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 8989620595762632791}
-  _speed: 3
-  _minSpeed: 3
-  _maxSpeed: 8
-  _speedAcceleration: 1
-  _zeroSpeed: 1.2
   _damage: 60
   _criticalRate: 0.5
+--- !u!114 &-5076665077999212980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204227422169047206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff04fad7c21bde42ad1cd06fe41e988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 8989620595762632791}
+  _speed: 8
+  _flipTime: 1.2
 --- !u!50 &8989620595762632791
 Rigidbody2D:
   serializedVersion: 5

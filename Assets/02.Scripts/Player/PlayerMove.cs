@@ -8,6 +8,9 @@ public class PlayerMove : MonoBehaviour
     private Camera _mainCamera;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
+    [Header("현재 위치")]
+    public Vector2 Position => _position;
+
     [Header("이동 범위")]
     [SerializeField] private float _maxX;
     [SerializeField] private float _minX;
@@ -88,6 +91,7 @@ public class PlayerMove : MonoBehaviour
     {
         // 3. 구한 방향으로 이동한다.
         _rigidbody2D.linearVelocity = _direction * Speed;
+        _position = transform.position;
     }
 
     private void Inside()
