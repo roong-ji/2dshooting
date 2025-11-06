@@ -13,6 +13,4 @@ public class ChargeMovementComponent : EnemyMovementComponent
         _rigidbody2D.linearVelocity = Direction * Speed;
     }
 
-
-
 }

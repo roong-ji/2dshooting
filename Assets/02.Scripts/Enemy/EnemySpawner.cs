@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] _enemyPrefab;
 
     [Header("스폰 확률")]
-    [SerializeField] private float _spawnChance = 0.3f;
+    [SerializeField] private float[] _spawnChance;
 
     [Header("스폰 범위")]
     [SerializeField] private float _minSpawnX;
@@ -31,7 +31,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int enemyType = Random.value < _spawnChance ? 0 : 1;
+        int enemyType = Random.value < _spawnChance[0] ? 0 : 1;
+        enemyType = Random.value < _spawnChance[1] ? 1 : 2;
         GameObject enemy = Instantiate(_enemyPrefab[enemyType]);
         Vector3 pos = enemy.transform.position;
         pos.x = Random.Range(_minSpawnX, _maxSpawnX);

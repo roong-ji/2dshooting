@@ -1,3 +1,4 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,7 +12,7 @@ public abstract class EnemyMovementComponent : MonoBehaviour
 
     private float _timer = 0f;
     private float _knockbackDuration = 0.5f;
-    private bool _isKnockback = false;
+    protected bool _isKnockback = false;
 
     private void FixedUpdate()
     {
