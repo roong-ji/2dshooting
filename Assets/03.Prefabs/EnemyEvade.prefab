@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4888551535792464986}
   - component: {fileID: 6115426828778821837}
   - component: {fileID: 7182192259089092744}
+  - component: {fileID: 6469797541148194308}
   m_Layer: 0
   m_Name: EnemyEvade
   m_TagString: Enemy
@@ -105,8 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27a908345085d49805718682181a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthComponent: {fileID: 7182192259089092744}
-  _movementComponent: {fileID: 4888551535792464986}
 --- !u!50 &3281503512113169955
 Rigidbody2D:
   serializedVersion: 5
@@ -218,4 +217,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dropComponent: {fileID: 6469797541148194308}
   _health: 100
+--- !u!114 &6469797541148194308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004280197912245676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6a572386349d244baa7d5daf0519a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 3064062901601362279, guid: 1cf5c60b6e09a9349afc4d17cd8601b4, type: 3}
+  - {fileID: 1454288444609054788, guid: 557d3e28467c5584fa5e7ff892148ea8, type: 3}
+  - {fileID: 1761063731729653358, guid: fe231e6c2ca94474bbc325ebe1cd690e, type: 3}
+  _weights: 070000000200000001000000
+  _dropRate: 0.5
