@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
         _fireComponent = GetComponent<FireComponent>();
     }
 
+    public void TakeDamage(float damage)
+    {
+        _healthComponent.TakeDamage(damage);
+    }
+
     public void Heal(float amount)
     {
         _healthComponent.Heal(amount);

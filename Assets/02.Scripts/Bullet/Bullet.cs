@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 enum EBulletType
 {
@@ -18,36 +19,40 @@ public class Bullet : MonoBehaviour
 
     private bool ShouldHit(GameObject target)
     {
-        if(_bulletType == EBulletType.PlayerBullet)
+        if(_bulletType == EBulletType.PlayerBullet && target.CompareTag("Enemy"))
         {
-            return target.CompareTag("Enemy");
+            AttackEnemy(target);
+            return true;
         }
-        else if(_bulletType == EBulletType.EnemyBullet)
+        else if(_bulletType == EBulletType.EnemyBullet && target.CompareTag("Player"))
         {
-            return target.CompareTag("Player");
+            AttackPlayer(target);
+            return true;
         }
         return false;
     }
 
+    private void AttackPlayer(GameObject target)
+    {
+        Player player = target.GetComponent<Player>();
+        player.TakeDamage(_damage);
+    }
+
+    private void AttackEnemy(GameObject target)
+    {
+        Enemy enemy = target.GetComponent<Enemy>();
+        HitboxComponent hitbox = target.GetComponent<HitboxComponent>();
+
+        if (hitbox != null) _damage *= hitbox.DamageRate;
+        enemy.TakeDamage(_damage);
+
+        bool critical = Random.value < _criticalRate;
+        if (critical) enemy.Knockback();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HealthComponent entity = collision.GetComponent<HealthComponent>();
-        if (entity == null) return;
-
-        if(ShouldHit(collision.gameObject) == false) return;
-
-        // 데미지 계산
-        HitboxComponent hitbox = collision.GetComponent<HitboxComponent>();
-        float damage = _damage *= hitbox.DamageRate;
-
-        // 데미지 적용
-        entity.TakeDamage(damage);
-
-        // 크리티컬 적용
-        bool critical = Random.value < _criticalRate;
-        MovementComponent movement = collision.GetComponent<MovementComponent>();
-        if (critical) movement.Knockback();
-
+        if (ShouldHit(collision.gameObject) == false) return;
         Destroy(gameObject);
     }
 
