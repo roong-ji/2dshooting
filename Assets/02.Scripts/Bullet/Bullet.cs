@@ -40,14 +40,13 @@ public class Bullet : MonoBehaviour
 
     private void AttackEnemy(GameObject target)
     {
-        Enemy enemy = target.GetComponent<Enemy>();
         HitboxComponent hitbox = target.GetComponent<HitboxComponent>();
 
         if (hitbox != null) _damage *= hitbox.DamageRate;
-        enemy.TakeDamage(_damage);
+        hitbox.TakeDamage(_damage);
 
         bool critical = Random.value < _criticalRate;
-        if (critical) enemy.Knockback();
+        if (critical) hitbox.Knockback();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

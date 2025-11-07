@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: -5031708002172254640}
   damageRate: 1
 --- !u!114 &-613797259271077554
 MonoBehaviour:
@@ -386,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: -5031708002172254640}
   damageRate: 0.5
 --- !u!1 &4784988977449655084
 GameObject:
@@ -524,4 +526,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415605ee67a4e60498fefcefdbcc613c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: -5031708002172254640}
   damageRate: 0.5
