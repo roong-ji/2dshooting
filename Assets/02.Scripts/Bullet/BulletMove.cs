@@ -1,11 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BulletMove : MonoBehaviour
+public class BulletMove : MovementComponent
 {
-    [SerializeField] protected Rigidbody2D _rigidbody2D;
-
-    [SerializeField] private float _speed;
     [SerializeField] private float _flipTime;
     private float _timer = 0f;
 
@@ -18,7 +15,7 @@ public class BulletMove : MonoBehaviour
         _flipedRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z * -1f);
     }
 
-    private void FixedUpdate()
+    protected override void Move()
     {
         _timer += Time.deltaTime;
 

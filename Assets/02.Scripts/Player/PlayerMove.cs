@@ -35,7 +35,7 @@ public class PlayerMove : MovementComponent
         Inside();
     }
 
-    public void Speedup(float amount)
+    public override void MoveSpeedup(float amount)
     {
         _originSpeed += amount;
     }

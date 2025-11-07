@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemDropComponent : MonoBehaviour
+public class ItemDropper : MonoBehaviour
 {
     [Header("아이템 목록")]
     [SerializeField] private GameObject[] _items;
@@ -15,13 +15,13 @@ public class ItemDropComponent : MonoBehaviour
     {
         // 가중치 총합 계산
         _totalWeight = 0;
-        foreach(var weight in _weights)
+        foreach (var weight in _weights)
         {
             _totalWeight += weight;
         }
     }
 
-    public void DropItem()
+    public void DropItem(Vector2 dropPosition)
     {
         // 아이템을 드랍할 것인지 확인
         if (Random.value > _dropRate) return;
@@ -38,7 +38,6 @@ public class ItemDropComponent : MonoBehaviour
             randomWeight -= weight;
         }
         // 아이템 드랍
-        Instantiate(_items[itemIndex], transform.position, Quaternion.identity);
+        Instantiate(_items[itemIndex], dropPosition, Quaternion.identity);
     }
-
 }

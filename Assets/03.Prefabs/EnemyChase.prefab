@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4574282418944773859}
   - component: {fileID: 3214394383752733263}
   - component: {fileID: -8909316737204028752}
-  - component: {fileID: 3751631775567211263}
   - component: {fileID: 2194895188563600720}
   - component: {fileID: 4640807719396680093}
   m_Layer: 0
@@ -158,26 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dropComponent: {fileID: 3751631775567211263}
+  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _health: 100
---- !u!114 &3751631775567211263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816798911127756622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f6a572386349d244baa7d5daf0519a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _items:
-  - {fileID: 3064062901601362279, guid: 1cf5c60b6e09a9349afc4d17cd8601b4, type: 3}
-  - {fileID: 1454288444609054788, guid: 557d3e28467c5584fa5e7ff892148ea8, type: 3}
-  - {fileID: 1761063731729653358, guid: fe231e6c2ca94474bbc325ebe1cd690e, type: 3}
-  _weights: 070000000200000001000000
-  _dropRate: 0.5
 --- !u!114 &2194895188563600720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +174,6 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 4574282418944773859}
   _speed: 3
   _direction: {x: 0, y: 0}
-  _playerTransform: {fileID: 0}
 --- !u!60 &4640807719396680093
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public abstract class MovementComponent : MonoBehaviour
 
     protected abstract void Move();
 
+    public virtual void MoveSpeedup(float amount) { }
     public virtual void Knockback() { }
 
 }
