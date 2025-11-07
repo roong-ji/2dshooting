@@ -1,44 +1,16 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerFire : MonoBehaviour
+// 스페이스바를 누르면 총알을 만들어서 발사
+public class PlayerFireComponent : FireComponent
 {
-    // 스페이스바를 누르면 총알을 만들어서 발사
-
-    [Header("총알 프리팹")]
-    [SerializeField] private GameObject[] _bulletPrefab;
-
-    [Header("발사 위치")]
-    [SerializeField] private Transform _firePositionLeft;
-    [SerializeField] private Transform _firePositionRight;
-
-    [SerializeField] private Quaternion _leftRotation;
-    [SerializeField] private Quaternion _rightRotation;
-
-    private float _timer = 0f;
-
-    [Header("공격 속도")]
-    [Tooltip("1초당 공격 횟수")]
-    [SerializeField] private float _fireSpeed;
-
-    private int _bulletType = 0; // 현재 총알 종류
-    private int _typeNumber = 2; // 총알 종류 개수
-
     private bool _autoFire = true;
 
-    private void Update()
-    {
-        _timer += Time.deltaTime;
-
-        InputMode();
-        Fire();
-
-    }
-
     // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함
-
-    private void Fire()
+    protected override void Fire()
     {
+        InputMode();
+
         // 1. 발사 버튼을 누르면
         if ((_autoFire || Input.GetKey(KeyCode.Space)) && 1f/_fireSpeed <= _timer)
         {
@@ -67,11 +39,5 @@ public class PlayerFire : MonoBehaviour
             _autoFire = false;
         }
     }
-
-    public void FireSpeedup(float amount)
-    {
-        _fireSpeed += amount;
-    }
-
 
 }

@@ -9,7 +9,7 @@ public class FireSpeedupItem : MonoBehaviour
     {
         if (collision.CompareTag("Player") == false) return;
         // 아이템 획득 효과로 스피드업
-        collision.GetComponent<PlayerFire>().FireSpeedup(_fireSpeedupAmount);
+        collision.GetComponent<PlayerFireComponent>().FireSpeedup(_fireSpeedupAmount);
 
         // 아이템 오브젝트 제거
         Destroy(gameObject);

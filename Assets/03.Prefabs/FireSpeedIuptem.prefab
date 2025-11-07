@@ -140,17 +140,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 5213413055495056806}
-  _speed: 7
+  _speed: 0
   _direction: {x: 0, y: 0}
-  _invokeTime: 0
-  _duration: 2
-  _p:
-  - {x: 0, y: 0}
-  - {x: 2, y: 2}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  _pCount: 0
+  _invokeTime: 2
+  _duration: 1
+  _curveHeight: 1.5
 --- !u!114 &-238739942737820730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +173,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

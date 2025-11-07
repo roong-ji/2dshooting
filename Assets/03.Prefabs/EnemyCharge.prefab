@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -613797259271077554}
   - component: {fileID: 201427749079851826}
   - component: {fileID: 1613313987362607262}
-  - component: {fileID: 6142634932142136709}
+  - component: {fileID: 6796750620361937626}
   m_Layer: 0
   m_Name: EnemyCharge
   m_TagString: Enemy
@@ -249,7 +249,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 5350554743939198428}
   _speed: 2.5
   _direction: {x: 0, y: -1}
---- !u!114 &6142634932142136709
+--- !u!114 &6796750620361937626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,15 +258,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2368801934644374789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd4bf856c05fab24185a946229e879d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5213b96845f966b43adc6672ce9404ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 8394241573982857948, guid: 4b4df071b53079b4faac3bb4c4e1fd06, type: 3}
+  _bulletPrefab:
+  - {fileID: 8394241573982857948, guid: 4b4df071b53079b4faac3bb4c4e1fd06, type: 3}
   _firePositionLeft: {fileID: 4841507379498257535}
   _firePositionRight: {fileID: 6341783732567875944}
   _leftRotation: {x: 0, y: 0, z: 0, w: 0}
   _rightRotation: {x: 0, y: 0, z: 0, w: 0}
-  _fireRate: 1
+  _fireSpeed: 1
 --- !u!1 &3251924264269729674
 GameObject:
   m_ObjectHideFlags: 0
