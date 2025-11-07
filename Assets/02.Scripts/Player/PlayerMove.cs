@@ -35,9 +35,8 @@ public class PlayerMove : MovementComponent
         Inside();
     }
 
-    public void SpeedIncrease(float amount)
+    public void Speedup(float amount)
     {
-        Debug.Log("Speed Increased by " + amount);
         _originSpeed += amount;
     }
 

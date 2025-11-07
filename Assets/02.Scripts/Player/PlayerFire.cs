@@ -18,7 +18,8 @@ public class PlayerFire : MonoBehaviour
     private float _timer = 0f;
 
     [Header("공격 속도")]
-    [SerializeField] private float _fireRate;
+    [Tooltip("1초당 공격 횟수")]
+    [SerializeField] private float _fireSpeed;
 
     private int _bulletType = 0; // 현재 총알 종류
     private int _typeNumber = 2; // 총알 종류 개수
@@ -34,10 +35,12 @@ public class PlayerFire : MonoBehaviour
 
     }
 
+    // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함
+
     private void Fire()
     {
         // 1. 발사 버튼을 누르면
-        if ((_autoFire || Input.GetKey(KeyCode.Space)) && _fireRate <= _timer)
+        if ((_autoFire || Input.GetKey(KeyCode.Space)) && 1f/_fireSpeed <= _timer)
         {
             // 2. 총알 프리팹을 복제해서 게임 오브젝트를 생성한다.
             //GameObject bullet = Instantiate(_bulletPrefab);
@@ -63,6 +66,11 @@ public class PlayerFire : MonoBehaviour
         {
             _autoFire = false;
         }
+    }
+
+    public void FireSpeedup(float amount)
+    {
+        _fireSpeed += amount;
     }
 
 

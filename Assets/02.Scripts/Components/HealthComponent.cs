@@ -13,4 +13,10 @@ public class HealthComponent : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Heal(float amount)
+    {
+        _health += amount;
+    }
+
 }
