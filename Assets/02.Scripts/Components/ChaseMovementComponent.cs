@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChaseMovementComponent : MovementComponent
 {
-    [SerializeField] private Transform _playerTransform;
+    private Transform _playerTransform;
     private Vector2 _directionToPlayer;
 
     private float _timer = 0f;
