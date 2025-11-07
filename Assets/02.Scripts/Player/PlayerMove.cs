@@ -16,12 +16,8 @@ public class PlayerMove : MovementComponent
     [SerializeField] private float _minY;
 
     [Header("이동 속도")]
-    public float Speed;
     [SerializeField] private float _originSpeed;
-    [SerializeField] private float _maxSpeed;
-    [SerializeField] private float _minSpeed;
     [SerializeField] private float _speedAcceleration;
-    [SerializeField] private float _speedIncrement;
 
     private Vector2 _position;
     private Vector2 _originPosition;
@@ -39,24 +35,20 @@ public class PlayerMove : MovementComponent
         Inside();
     }
 
+    public void SpeedIncrease(float amount)
+    {
+        Debug.Log("Speed Increased by " + amount);
+        _originSpeed += amount;
+    }
+
     private void GetSpeed()
     {
-        // Q , E 키로 속도 조절, Shift 키로 가속
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            _originSpeed += _speedIncrement;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            _originSpeed -= _speedIncrement;
-        }
+        // Shift 키를 누르면 가속
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            Speed = _originSpeed * _speedAcceleration;
+            _speed = _originSpeed * _speedAcceleration;
         }
-        else Speed = _originSpeed;
-        Speed = Mathf.Clamp(Speed, _minSpeed, _maxSpeed);
-
+        else _speed = _originSpeed;
 
     }
 
@@ -81,7 +73,7 @@ public class PlayerMove : MovementComponent
     protected override void Move()
     {
         // 3. 구한 방향으로 이동한다.
-        _rigidbody2D.linearVelocity = _direction * Speed;
+        _rigidbody2D.linearVelocity = _direction * _speed;
         _position = transform.position;
     }
 
@@ -89,8 +81,9 @@ public class PlayerMove : MovementComponent
     {
         // 화면 밖으로 나가지 않도록 위치 제한
         Vector3 viewPos = _mainCamera.WorldToViewportPoint(transform.position);
-        if (viewPos.x < _minX) viewPos.x = _maxX;
-        if (viewPos.x > _maxX) viewPos.x = _minX;
+        //if (viewPos.x < _minX) viewPos.x = _maxX;
+        //if (viewPos.x > _maxX) viewPos.x = _minX;
+        viewPos.x = Mathf.Clamp(viewPos.x, _minX, _maxX);
         viewPos.y = Mathf.Clamp(viewPos.y, _minY, _maxY);
         transform.position = _mainCamera.ViewportToWorldPoint(viewPos);
     }
