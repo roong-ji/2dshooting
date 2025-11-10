@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 4574282418944773859}
   - component: {fileID: 6539986694798989061}
   - component: {fileID: -8909316737204028752}
+  - component: {fileID: 5931597211641861657}
   - component: {fileID: 2194895188563600720}
   - component: {fileID: -7396945950862206205}
+  - component: {fileID: 9123266029344938536}
   m_Layer: 8
   m_Name: EnemyChase
   m_TagString: Enemy
@@ -199,6 +201,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _health: 100
+--- !u!114 &5931597211641861657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816798911127756622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493e8c138ba1a3042a8467ba8e841210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2194895188563600720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +242,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 8465870908128774742}
   damageRate: 1
+--- !u!95 &9123266029344938536
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816798911127756622}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 751426b6cf824184e87351f39713327c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

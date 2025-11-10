@@ -5,16 +5,19 @@ public class Enemy : MonoBehaviour
 {
     private HealthComponent _healthComponent;
     private MovementComponent _movementComponent;
+    private EnemyAnimatorComponent _enemyAnimatorComponent;
 
     private void Awake()
     {
         _healthComponent = GetComponent<HealthComponent>();
         _movementComponent = GetComponent<MovementComponent>();
+        _enemyAnimatorComponent = GetComponent<EnemyAnimatorComponent>();
     }
 
     public void TakeDamage(float damage)
     {
         _healthComponent.TakeDamage(damage);
+        _enemyAnimatorComponent.PlayHitAnimation();
     }
 
     public void Knockback()

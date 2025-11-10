@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 2478462623523027235}
   - component: {fileID: 4888551535792464986}
   - component: {fileID: 7182192259089092744}
+  - component: {fileID: 7423438530677424093}
   - component: {fileID: 822079095385659039}
+  - component: {fileID: -5887048132281181034}
   m_Layer: 8
   m_Name: EnemyEvade
   m_TagString: Enemy
@@ -33,8 +35,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,6 +206,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _health: 100
+--- !u!114 &7423438530677424093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004280197912245676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493e8c138ba1a3042a8467ba8e841210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &822079095385659039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,3 +232,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 7322616066679021973}
   damageRate: 1
+--- !u!95 &-5887048132281181034
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004280197912245676}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e9c49ad9edd9874694f87ef8a0ec62e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
