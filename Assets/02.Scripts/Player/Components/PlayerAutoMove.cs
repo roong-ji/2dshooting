@@ -4,22 +4,20 @@ using UnityEngine;
 public class PlayerAutoMove : MovementComponent
 {
 
-    private Vector2 _closestEnemyPosition;
+    private Transform _closestEnemy;
     private float _closestEnemyDistance = 100f;
-    private float _distance = -2f;
+    private float _distance = 2f;
 
     protected override void Move()
     {
-        if (_closestEnemyPosition == Vector2.zero) return;
+        if (_closestEnemy == null) return;
+
         // 가장 가까운 적 오브젝트를 찾아가서 일정 거리 유지하며 공격
 
         // x축은 쫓아가기, y축은 일정 거리
-        Vector2 direction = (Vector2)transform.position - _closestEnemyPosition;
-        Debug.Log(direction);
+        _direction = (Vector2)(_closestEnemy.position - transform.position);
 
-        _direction.x = _closestEnemyPosition.x - transform.position.x;
-
-        _direction.y = _direction.y < _distance ? 1 : -1;
+        _direction.y = _direction.y < _distance ? -1 : _direction.y;
 
         _rigidbody2D.linearVelocity = _direction.normalized * _speed;
 
@@ -38,16 +36,17 @@ public class PlayerAutoMove : MovementComponent
         if (distance < _closestEnemyDistance)
         {
             _closestEnemyDistance = distance;
-            _closestEnemyPosition = collision.transform.position;
+            _closestEnemy = collision.transform;
         }
-    }
+    } 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") == false) return;
+        if (collision.transform != _closestEnemy) return;
 
         _closestEnemyDistance = 100f;
-        _closestEnemyPosition = Vector2.zero;
+        _closestEnemy = null;
     }
 
 

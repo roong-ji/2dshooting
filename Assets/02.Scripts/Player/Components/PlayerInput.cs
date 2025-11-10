@@ -36,7 +36,8 @@ public class PlayerInput : MonoBehaviour
 
     private void InputMode()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || 
+            Input.GetKeyDown(KeyCode.Keypad1))
         {
             // 자동 모드
             _playerFireComponent._autoFire = true;
@@ -44,7 +45,8 @@ public class PlayerInput : MonoBehaviour
             _playerMove.enabled = false;
             _detectZone.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) || 
+            Input.GetKeyDown(KeyCode.Keypad2))
         {
             // 조작 모드
             _playerFireComponent._autoFire = false;

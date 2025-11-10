@@ -19,12 +19,14 @@ public class Bullet : MonoBehaviour
 
     private bool ShouldHit(GameObject target)
     {
-        if(_bulletType == EBulletType.PlayerBullet && target.CompareTag("Enemy"))
+        if(_bulletType == EBulletType.PlayerBullet && 
+            target.CompareTag("Enemy"))
         {
             AttackEnemy(target);
             return true;
         }
-        else if(_bulletType == EBulletType.EnemyBullet && target.CompareTag("Player"))
+        else if(_bulletType == EBulletType.EnemyBullet && 
+            target.CompareTag("Player"))
         {
             AttackPlayer(target);
             return true;

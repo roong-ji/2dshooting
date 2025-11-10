@@ -4,15 +4,7 @@ using UnityEngine.InputSystem.Controls;
 // 플레이어 이동
 public class PlayerMove : MovementComponent
 {
-    private Camera _mainCamera;
-
-    [Header("이동 범위")]
-    [SerializeField] private float _maxX;
-    [SerializeField] private float _minX;
-    [SerializeField] private float _maxY;
-    [SerializeField] private float _minY;
-
-    [Header("이동 속도")]
+    [Header("이동 속도 조작")]
     [SerializeField] private float _originSpeed;
     [SerializeField] private float _speedAcceleration;
 
@@ -37,7 +29,8 @@ public class PlayerMove : MovementComponent
     private void GetSpeed()
     {
         // Shift 키를 누르면 가속
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift) || 
+            Input.GetKey(KeyCode.RightShift))
         {
             _speed = _originSpeed * _speedAcceleration;
         }
