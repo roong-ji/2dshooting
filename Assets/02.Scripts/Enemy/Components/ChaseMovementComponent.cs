@@ -26,7 +26,9 @@ public class ChaseMovementComponent : MovementComponent
         transform.rotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + angle);
         _direction = -transform.up;
 
+        // 넉백 여부
         KnockbackMove();
+
         // 설정된 방향으로 이동
         _rigidbody2D.linearVelocity = _direction * _speed;
     }
