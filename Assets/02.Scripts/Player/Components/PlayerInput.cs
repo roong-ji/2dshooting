@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private PlayerAutoMove _playerAutoMove;
-    [SerializeField] private PlayerMove _playerMove;
-    [SerializeField] private PlayerFireComponent _playerFireComponent;
+    private PlayerAutoMove _playerAutoMove;
+    private PlayerMovementComponent _playerMovementComponent;
+    private PlayerFireComponent _playerFireComponent;
     [SerializeField] private GameObject _detectZone;
 
     private Camera _mainCamera;
@@ -13,6 +13,15 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float _minX;
     [SerializeField] private float _maxY;
     [SerializeField] private float _minY;
+
+    private bool _autoMode = false;
+
+    private void Awake()
+    {
+        _playerAutoMove = GetComponent<PlayerAutoMove>();
+        _playerMovementComponent = GetComponent<PlayerMovementComponent>();
+        _playerFireComponent = GetComponent<PlayerFireComponent>();
+    }
 
     private void Start()
     {
@@ -26,7 +35,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        InputMode();
+        GetInput();
     }
 
     private void LateUpdate()
@@ -34,26 +43,61 @@ public class PlayerInput : MonoBehaviour
         Inside();
     }
 
-    private void InputMode()
+    private void GetInput()
     {
+        // 자동 모드
         if (Input.GetKeyDown(KeyCode.Alpha1) || 
             Input.GetKeyDown(KeyCode.Keypad1))
         {
-            // 자동 모드
-            _playerFireComponent._autoFire = true;
-            _playerAutoMove.enabled = true;
-            _playerMove.enabled = false;
+            _autoMode = true;
             _detectZone.SetActive(true);
         }
+        // 조작 모드
         if (Input.GetKeyDown(KeyCode.Alpha2) || 
             Input.GetKeyDown(KeyCode.Keypad2))
         {
-            // 조작 모드
-            _playerFireComponent._autoFire = false;
-            _playerAutoMove.enabled = false;
-            _playerMove.enabled = true;
+            _autoMode = false;
             _detectZone.SetActive(false);
         }
+
+        // 자동 전투
+        if (_autoMode)
+        {
+            Vector2 direction = _playerAutoMove.GetMoveDirection();
+            _playerMovementComponent.SetMoveDirection(direction);
+            _playerFireComponent.ExecuteFire();
+        }
+
+        // 수동 입력 감지
+        else
+        {
+            Vector2 direction = Vector2.zero;
+            direction.x = Input.GetAxisRaw("Horizontal");
+            direction.y = Input.GetAxisRaw("Vertical");
+
+            _playerMovementComponent.SetMoveDirection(direction.normalized);
+
+            // R키를 눌러 원점 복귀
+            if (Input.GetKey(KeyCode.R))
+            {
+                _playerMovementComponent.GoOrigin();
+            }
+
+            // Shift 키를 누르면 가속
+            if (Input.GetKey(KeyCode.LeftShift) ||
+                Input.GetKey(KeyCode.RightShift))
+            {
+                _playerMovementComponent.GoFaster();
+            }
+            else _playerMovementComponent.GoNormal();
+
+
+            if (Input.GetKey(KeyCode.Space)) 
+            {
+                _playerFireComponent.ExecuteFire();
+            }
+        }
+
     }
 
     private void Inside()

@@ -1,30 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAutoMove : MovementComponent
+public class PlayerAutoMove : MonoBehaviour
 {
 
     private Transform _closestEnemy;
     private float _closestEnemyDistance = 100f;
     private float _distance = 2f;
 
-    protected override void Move()
+    public Vector2 GetMoveDirection()
     {
-        if (_closestEnemy == null) return;
+        if (_closestEnemy == null) return Vector2.zero;
 
         // 가장 가까운 적 오브젝트를 찾아가서 일정 거리 유지하며 공격
 
-        // x축은 쫓아가기, y축은 일정 거리
-        _direction = (Vector2)(_closestEnemy.position - transform.position);
+        // x축은 쫓아가기, y축은 일정 거리 유지 하기
+        Vector2 direction = (Vector2)(_closestEnemy.position - transform.position);
 
-        _direction.y = _direction.y < _distance ? -1 : _direction.y;
+        direction.y = direction.y < _distance ? -1 : direction.y;
 
-        _rigidbody2D.linearVelocity = _direction.normalized * _speed;
+        return direction.normalized;
 
-    }
-    public override void MoveSpeedup(float amount)
-    {
-        _speed += amount;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,5 +45,8 @@ public class PlayerAutoMove : MovementComponent
         _closestEnemy = null;
     }
 
+    // 가장 가까운 적을 찾는다.
+    // 해당 적의 방향으로 이동한다.
+    // 만약 거리가 너무 가깝다면, y축은 아래로 이동한다.
 
 }

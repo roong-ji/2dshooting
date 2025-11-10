@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     {
         _movementComponent.Knockback();
     }
-    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

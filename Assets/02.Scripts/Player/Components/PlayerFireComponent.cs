@@ -1,29 +1,33 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-// 스페이스바를 누르면 총알을 만들어서 발사
 public class PlayerFireComponent : FireComponent
 {
-    public bool _autoFire = true;
+
+    private bool _fireRequested = false;
 
     // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함
     protected override void Fire()
     {
-        // 1. 발사 버튼을 누르면
-        if ((_autoFire || Input.GetKey(KeyCode.Space)) && 1f/_fireSpeed <= _timer)
-        {
-            // 2. 총알 프리팹을 복제해서 게임 오브젝트를 생성한다.
-            //GameObject bullet = Instantiate(_bulletPrefab);
+        // 커맨드 입력 체크
+        if (_fireRequested == false) return;
+        _fireRequested = false;
 
-            // 3. 총알의 위치를 총구 위치로 바꾸기
-            //bullet.transform.position = _firePosition[0].transform.position;
+        // 발사 쿨타임 체크
+        if (1f / _fireSpeed > _timer) return;
 
-            Instantiate(_bulletPrefab[_bulletType], _firePositionLeft.position, _leftRotation);
-            Instantiate(_bulletPrefab[_bulletType], _firePositionRight.position, _rightRotation);
+        // 총알 발사
+        Instantiate(_bulletPrefab[_bulletType], _firePositionLeft.position, _leftRotation);
+        Instantiate(_bulletPrefab[_bulletType], _firePositionRight.position, _rightRotation);
 
-            _bulletType = ++_bulletType % _typeNumber;
-            _timer = 0f;
-        }
+        // 다음 총알 장전
+        _bulletType = ++_bulletType % _typeNumber;
+        _timer = 0f;
+    }
+
+    public void ExecuteFire()
+    {
+        _fireRequested = true;
     }
 
 }
