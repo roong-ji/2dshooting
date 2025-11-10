@@ -111,7 +111,7 @@ public class PlayerInput : MonoBehaviour
         // Fade, Timing, State가 무시되고 어디서 애니메이션을 수정하는지 알 수 없어지게되어 비권장하는 방식
 
         // 방식 2.
-        _animator.SetInteger("x", (int)direction.x);
+        _animator.SetInteger("x", Mathf.RoundToInt(direction.x));
 
     }
 

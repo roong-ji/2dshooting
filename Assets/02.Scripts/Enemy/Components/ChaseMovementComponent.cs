@@ -22,16 +22,16 @@ public class ChaseMovementComponent : MovementComponent
         _directionToPlayer = _playerTransform.position - transform.position;
 
         // 오브젝트의 회전을 이동 방향에 맞게 설정
-        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(_directionToPlayer.y, _directionToPlayer.x) * Mathf.Rad2Deg);
+        float angle = Vector2.SignedAngle(_direction, _directionToPlayer);
+        transform.rotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + angle);
+        _direction = -transform.up;
 
-        // 설정된 방향으로 이동
         KnockbackMove();
+        // 설정된 방향으로 이동
         _rigidbody2D.linearVelocity = _direction * _speed;
     }
     private void KnockbackMove()
     {
-        _direction = transform.right;
-
         if (_isKnockback == false) return;
 
         _timer += Time.fixedDeltaTime;

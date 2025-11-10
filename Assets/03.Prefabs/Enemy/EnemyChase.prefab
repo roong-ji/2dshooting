@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3595555379803029388}
   - component: {fileID: 8465870908128774742}
   - component: {fileID: 4574282418944773859}
+  - component: {fileID: 6539986694798989061}
   - component: {fileID: -8909316737204028752}
   - component: {fileID: 2194895188563600720}
-  - component: {fileID: 4640807719396680093}
   - component: {fileID: -7396945950862206205}
   m_Layer: 8
   m_Name: EnemyChase
@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0.7971698, g: 0.7674716, b: 0.3120995, a: 1}
+  m_Sprite: {fileID: -1147401495359466748, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,36 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8909316737204028752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816798911127756622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
-  _health: 100
---- !u!114 &2194895188563600720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816798911127756622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0330d2c7d476e4690c2e200f6b08b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 4574282418944773859}
-  _speed: 3
-  _direction: {x: 0, y: 0}
---- !u!60 &4640807719396680093
+--- !u!60 &6539986694798989061
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +170,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -207,11 +178,42 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
+    - - {x: -0.5, y: 0.5}
       - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
+      - {x: -0.125, y: -0.5}
+      - {x: 0.16666667, y: -0.5}
       - {x: 0.5, y: 0}
+      - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &-8909316737204028752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816798911127756622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
+  _health: 100
+--- !u!114 &2194895188563600720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816798911127756622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0330d2c7d476e4690c2e200f6b08b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 4574282418944773859}
+  _speed: 3
+  _direction: {x: 0, y: 0}
 --- !u!114 &-7396945950862206205
 MonoBehaviour:
   m_ObjectHideFlags: 0
