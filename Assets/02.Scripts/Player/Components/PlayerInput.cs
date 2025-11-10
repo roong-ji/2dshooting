@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
     private PlayerFireComponent _playerFireComponent;
     [SerializeField] private GameObject _detectZone;
 
+    private Animator _animator;
+
     private Camera _mainCamera;
 
     [SerializeField] private float _maxX;
@@ -21,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         _playerAutoMove = GetComponent<PlayerAutoMove>();
         _playerMovementComponent = GetComponent<PlayerMovementComponent>();
         _playerFireComponent = GetComponent<PlayerFireComponent>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -60,10 +63,12 @@ public class PlayerInput : MonoBehaviour
             _detectZone.SetActive(false);
         }
 
+        Vector2 direction;
+
         // 자동 전투
         if (_autoMode)
         {
-            Vector2 direction = _playerAutoMove.GetMoveDirection();
+            direction = _playerAutoMove.GetMoveDirection();
             _playerMovementComponent.SetMoveDirection(direction);
             _playerFireComponent.ExecuteFire();
         }
@@ -71,7 +76,6 @@ public class PlayerInput : MonoBehaviour
         // 수동 입력 감지
         else
         {
-            Vector2 direction = Vector2.zero;
             direction.x = Input.GetAxisRaw("Horizontal");
             direction.y = Input.GetAxisRaw("Vertical");
 
@@ -97,6 +101,17 @@ public class PlayerInput : MonoBehaviour
                 _playerFireComponent.ExecuteFire();
             }
         }
+
+        // 애니메이션
+
+        // 방식 1. Play 메서드를 이용한 강제 적용
+        //if (direction.x < 0f) _animator.Play("Left");
+        //if (direction.x == 0f) _animator.Play("Idle");
+        //if (direction.x > 0f) _animator.Play("Right");
+        // Fade, Timing, State가 무시되고 어디서 애니메이션을 수정하는지 알 수 없어지게되어 비권장하는 방식
+
+        // 방식 2.
+        _animator.SetInteger("x", (int)direction.x);
 
     }
 
