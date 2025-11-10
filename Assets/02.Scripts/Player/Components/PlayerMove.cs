@@ -18,30 +18,20 @@ public class PlayerMove : MovementComponent
 
     private Vector2 _originPosition;
 
-    private bool _autoMove = true;
-
     private void Start()
     {
-        _mainCamera = Camera.main;
         _originPosition = transform.position;
     }
 
     private void Update()
     {
-        InputMode();
         GetSpeed();
         GetDirection();
-        Inside();
     }
 
     public override void MoveSpeedup(float amount)
     {
         _originSpeed += amount;
-    }
-
-    private void AutoMove()
-    {
-
     }
 
     private void GetSpeed()
@@ -73,36 +63,10 @@ public class PlayerMove : MovementComponent
         }
     }
 
-    private void InputMode()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            _autoMove = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            _autoMove = false;
-        }
-    }
-
     protected override void Move()
     {
         // 3. 구한 방향으로 이동한다.
         _rigidbody2D.linearVelocity = _direction * _speed;
-        if (_autoMove == false) return;
-        AutoMove();
     }
-
-    private void Inside()
-    {
-        // 화면 밖으로 나가지 않도록 위치 제한
-        Vector3 viewPos = _mainCamera.WorldToViewportPoint(transform.position);
-        //if (viewPos.x < _minX) viewPos.x = _maxX;
-        //if (viewPos.x > _maxX) viewPos.x = _minX;
-        viewPos.x = Mathf.Clamp(viewPos.x, _minX, _maxX);
-        viewPos.y = Mathf.Clamp(viewPos.y, _minY, _maxY);
-        transform.position = _mainCamera.ViewportToWorldPoint(viewPos);
-    }
-
 
 }

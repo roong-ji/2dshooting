@@ -310,6 +310,7 @@ MonoBehaviour:
   _leftRotation: {x: 0, y: 0, z: 0.25881913, w: -0.9659258}
   _rightRotation: {x: 0, y: 0, z: 0.25881904, w: 0.9659258}
   _fireSpeed: 5
+  _autoFire: 1
 --- !u!114 &23273016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,10 +326,6 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 23273011}
   _speed: 7
   _direction: {x: 0, y: 0}
-  _maxX: 1
-  _minX: 0
-  _maxY: 0.5
-  _minY: 0
 --- !u!61 &23273017
 BoxCollider2D:
   m_ObjectHideFlags: 0
