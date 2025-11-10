@@ -6,9 +6,6 @@ public class PlayerMove : MovementComponent
 {
     private Camera _mainCamera;
 
-    [Header("현재 위치")]
-    public Vector2 Position => _position;
-
     [Header("이동 범위")]
     [SerializeField] private float _maxX;
     [SerializeField] private float _minX;
@@ -19,8 +16,9 @@ public class PlayerMove : MovementComponent
     [SerializeField] private float _originSpeed;
     [SerializeField] private float _speedAcceleration;
 
-    private Vector2 _position;
     private Vector2 _originPosition;
+
+    private bool _autoMove = true;
 
     private void Start()
     {
@@ -30,6 +28,7 @@ public class PlayerMove : MovementComponent
 
     private void Update()
     {
+        InputMode();
         GetSpeed();
         GetDirection();
         Inside();
@@ -38,6 +37,11 @@ public class PlayerMove : MovementComponent
     public override void MoveSpeedup(float amount)
     {
         _originSpeed += amount;
+    }
+
+    private void AutoMove()
+    {
+
     }
 
     private void GetSpeed()
@@ -65,7 +69,19 @@ public class PlayerMove : MovementComponent
         // R 키를 누르면 원래 위치로 돌아감
         if (Input.GetKey(KeyCode.R))
         {
-            _direction = _originPosition - _position;
+            _direction = _originPosition - (Vector2)transform.position;
+        }
+    }
+
+    private void InputMode()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            _autoMove = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            _autoMove = false;
         }
     }
 
@@ -73,7 +89,8 @@ public class PlayerMove : MovementComponent
     {
         // 3. 구한 방향으로 이동한다.
         _rigidbody2D.linearVelocity = _direction * _speed;
-        _position = transform.position;
+        if (_autoMove == false) return;
+        AutoMove();
     }
 
     private void Inside()

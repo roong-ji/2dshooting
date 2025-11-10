@@ -14,8 +14,8 @@ TagManager:
   - UI
   - DestoryZone
   - PlayerBullet
-  - 
-  - 
+  - EnemyLayer
+  - PlayerLayer
   - 
   - 
   - 

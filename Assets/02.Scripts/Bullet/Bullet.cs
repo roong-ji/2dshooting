@@ -41,8 +41,13 @@ public class Bullet : MonoBehaviour
     private void AttackEnemy(GameObject target)
     {
         HitboxComponent hitbox = target.GetComponent<HitboxComponent>();
+        if (hitbox == null)
+        {
+            Destroy(target); 
+            return;
+        }
 
-        if (hitbox != null) _damage *= hitbox.DamageRate;
+        _damage *= hitbox.DamageRate;
         hitbox.TakeDamage(_damage);
 
         bool critical = Random.value < _criticalRate;
