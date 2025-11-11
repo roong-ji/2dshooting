@@ -137,6 +137,8 @@ GameObject:
   - component: {fileID: 23273015}
   - component: {fileID: 23273019}
   - component: {fileID: 23273016}
+  - component: {fileID: 23273021}
+  - component: {fileID: 23273022}
   - component: {fileID: 23273020}
   m_Layer: 9
   m_Name: Player
@@ -405,6 +407,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &23273021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23273005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8929a78a7e86e3446bd51c8206d2f72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlePrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+--- !u!114 &23273022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23273005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e176ed71e19146145960702d7bd83f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillPrefab: {fileID: 2717919752128363686, guid: bd8cbebfdfb3e6745a39f2669132649c, type: 3}
+  _skillTransform: {x: 0, y: 0}
 --- !u!1 &93871149
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb56ac04d76937c46b44beb4a343cce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMaterial: {fileID: 2100000, guid: a4c6a13d031cbb2469589e7debafd0fe, type: 2}
   _scrollSpeed: 0.3
 --- !u!1 &519420028
 GameObject:
@@ -1253,7 +1281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb56ac04d76937c46b44beb4a343cce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMaterial: {fileID: 2100000, guid: abe7b2fa89a6ef34c876de1f706bbad7, type: 2}
   _scrollSpeed: 0.2
 --- !u!1 &1556447383
 GameObject:
@@ -1390,8 +1417,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb56ac04d76937c46b44beb4a343cce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMaterial: {fileID: 2100000, guid: bfc237faa75cdbb449a0523eb901c9d9, type: 2}
   _scrollSpeed: 0.1
+--- !u!1 &1865734230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1865734232}
+  - component: {fileID: 1865734231}
+  m_Layer: 0
+  m_Name: CameraShake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1865734231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865734230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0cb41de40abff41971b0d85db54e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeAmount: 0
+--- !u!4 &1865734232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865734230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010012700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,3 +1642,4 @@ SceneRoots:
   - {fileID: 131554828}
   - {fileID: 1556447384}
   - {fileID: 354698357}
+  - {fileID: 1865734232}

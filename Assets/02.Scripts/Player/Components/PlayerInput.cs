@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerAutoMove _playerAutoMove;
     private PlayerMovementComponent _playerMovementComponent;
     private PlayerFireComponent _playerFireComponent;
+    private BoomSkillComponent _boomSkillComponent;
 
     private Animator _animator;
 
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         _playerAutoMove = GetComponent<PlayerAutoMove>();
         _playerMovementComponent = GetComponent<PlayerMovementComponent>();
         _playerFireComponent = GetComponent<PlayerFireComponent>();
+        _boomSkillComponent = GetComponent<BoomSkillComponent>();
         _animator = GetComponent<Animator>();
     }
 
@@ -99,6 +101,12 @@ public class PlayerInput : MonoBehaviour
             {
                 _playerFireComponent.ExecuteFire();
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha3) ||
+            Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            _boomSkillComponent.Boom();
         }
 
         // 애니메이션
