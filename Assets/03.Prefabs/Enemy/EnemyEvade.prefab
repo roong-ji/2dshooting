@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7423438530677424093}
   - component: {fileID: 822079095385659039}
   - component: {fileID: -5887048132281181034}
+  - component: {fileID: -2162862829241831176}
   m_Layer: 8
   m_Name: EnemyEvade
   m_TagString: Enemy
@@ -206,7 +207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _health: 100
-  _explosionPrefab: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
 --- !u!114 &7423438530677424093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,3 +255,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2162862829241831176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004280197912245676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8929a78a7e86e3446bd51c8206d2f72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlePrefab: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}

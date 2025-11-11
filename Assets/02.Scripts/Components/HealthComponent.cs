@@ -7,8 +7,12 @@ public class HealthComponent : MonoBehaviour
     [Header("체력")]
     [SerializeField] private float _health;
 
-    [Header("폭팔 프리팹")]
-    [SerializeField] private GameObject _explosionPrefab;
+    private ParticleComponent _particleComponent;
+
+    private void Awake()
+    {
+        _particleComponent = GetComponent<ParticleComponent>();
+    }
 
     public void TakeDamage(float damage)
     {
@@ -22,8 +26,7 @@ public class HealthComponent : MonoBehaviour
 
     private void MakeExploisionEffect()
     {
-        if (_explosionPrefab == null) return;
-        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        _particleComponent.PlayParticleEffect();
     }
 
     private void DropItem()

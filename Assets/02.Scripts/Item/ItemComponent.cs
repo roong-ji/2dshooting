@@ -2,8 +2,12 @@ using UnityEngine;
 
 public abstract class ItemComponent : MonoBehaviour
 {
-    [Header("아이템 획득 이펙트")]
-    [SerializeField] private GameObject _particlePrefab;
+    private ParticleComponent _particleComponent;
+
+    private void Awake()
+    {
+        _particleComponent = GetComponent<ParticleComponent>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,7 +28,7 @@ public abstract class ItemComponent : MonoBehaviour
 
     private void ItemParticleEffect(Player player)
     {
-        Instantiate(_particlePrefab, player.transform.position, Quaternion.identity, player.transform);
+        _particleComponent.PlayParticleEffect(player);
     }
 
 }
