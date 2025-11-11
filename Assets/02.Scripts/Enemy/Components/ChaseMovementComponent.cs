@@ -9,11 +9,14 @@ public class ChaseMovementComponent : MovementComponent
     private float _knockbackDuration = 0.5f;
     private bool _isKnockback = false;
 
+    private float _originSpeed;
+
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
         _playerTransform = player.transform;
+        _originSpeed = _speed;
     }
 
     protected override void Move()
@@ -42,15 +45,15 @@ public class ChaseMovementComponent : MovementComponent
         if (_timer >= _knockbackDuration)
         {
             _isKnockback = false;
-            _timer = 0f;
             return;
         }
 
-        _direction = Vector2.Lerp(_direction, Vector2.zero, _timer / _knockbackDuration);
+        _speed = Mathf.Lerp(_speed, _originSpeed, _timer / _knockbackDuration);
     }
     public override void Knockback()
     {
+        _timer = 0f;
         _isKnockback = true;
-        _direction = -_direction;
+        _speed = -_originSpeed;
     }
 }
