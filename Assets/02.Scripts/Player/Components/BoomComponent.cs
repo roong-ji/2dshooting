@@ -16,7 +16,7 @@ public class BoomComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") == false) return;
-        _particleComponent.PlayParticleEffect(collision);
+        _particleComponent.PlayParticleEffect(collision.transform);
         Destroy(collision.gameObject);
     }
 }
