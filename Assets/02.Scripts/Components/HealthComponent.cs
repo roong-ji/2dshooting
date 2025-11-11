@@ -27,7 +27,7 @@ public class HealthComponent : MonoBehaviour
 
     private void MakeExplosionEffect()
     {
-        _particleComponent.PlayParticleEffect(transform);
+        _particleComponent.PlayParticleEffect();
     }
 
     private void DropItem()
