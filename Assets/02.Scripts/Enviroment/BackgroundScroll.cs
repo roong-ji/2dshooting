@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    [Header("배경 스크롤 설정")]
-    [SerializeField] private Material _backgroundMaterial;
+    [Header("배경 스크롤 속도 설정")]
     [SerializeField] private float _scrollSpeed;
+    private Material _backgroundMaterial;
 
     private void Awake()
     {
-        _backgroundMaterial.mainTextureOffset = Vector2.zero;
+        _backgroundMaterial = GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
