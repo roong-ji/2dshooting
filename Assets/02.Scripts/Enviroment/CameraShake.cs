@@ -4,33 +4,35 @@ public class CameraShake : MonoBehaviour
 {
 
     public float ShakeAmount;
-    float ShakeTime;
-    Vector3 initialPosition = new Vector3(0f, 0f, -10f);
+    public float ShakeTime;
+    private Vector3 _originPosition;
 
-    //private bool _isShake;
+    private Camera _camera;
+
+    private void Awake()
+    {
+        _camera = Camera.main;
+        _originPosition = _camera.transform.localPosition;
+    }
 
     public void ShakeForTime(float time)
     {
         ShakeAmount = time;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-
-        if (Input.GetKeyDown(KeyCode.F)) ShakeForTime(1.5f);
 
         if(ShakeTime > 0)
         {
-
+            Vector2 shakeVector = Random.insideUnitSphere * ShakeAmount;
+            _camera.transform.localPosition = _camera.transform.rotation * shakeVector + _originPosition;
+            ShakeTime -= Time.deltaTime;
         }
         else
         {
             ShakeTime = 0f;
-            transform.position = initialPosition;
+            _camera.transform.localPosition = _originPosition;
         }
     }
-
-
-
-
 }
