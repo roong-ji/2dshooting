@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433cbd0e38360ed44988ebc5cdf9f5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _detectZone: {fileID: 2010012700}
 --- !u!61 &23273017
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -361,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76ee52f9ec83c74fb25901f9f04c440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectZone: {fileID: 2010012700}
   _maxX: 1
   _minX: 0
   _maxY: 0.5

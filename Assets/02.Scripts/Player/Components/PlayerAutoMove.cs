@@ -4,6 +4,9 @@ using UnityEngine;
 public class PlayerAutoMove : MonoBehaviour
 {
 
+    [Header("감지 범위")]
+    [SerializeField] private GameObject _detectZone;
+
     private Transform _closestEnemy;
     private float _closestEnemyDistance = 100f;
     private float _distance = 2f;
@@ -21,6 +24,11 @@ public class PlayerAutoMove : MonoBehaviour
 
         return direction.normalized;
 
+    }
+
+    public void StartDetect(bool start)
+    {
+        _detectZone.SetActive(start);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -5,7 +5,6 @@ public class PlayerInput : MonoBehaviour
     private PlayerAutoMove _playerAutoMove;
     private PlayerMovementComponent _playerMovementComponent;
     private PlayerFireComponent _playerFireComponent;
-    [SerializeField] private GameObject _detectZone;
 
     private Animator _animator;
 
@@ -53,14 +52,14 @@ public class PlayerInput : MonoBehaviour
             Input.GetKeyDown(KeyCode.Keypad1))
         {
             _autoMode = true;
-            _detectZone.SetActive(true);
+            _playerAutoMove.StartDetect(true);
         }
         // 조작 모드
         if (Input.GetKeyDown(KeyCode.Alpha2) || 
             Input.GetKeyDown(KeyCode.Keypad2))
         {
             _autoMode = false;
-            _detectZone.SetActive(false);
+            _playerAutoMove.StartDetect(false);
         }
 
         Vector2 direction;
