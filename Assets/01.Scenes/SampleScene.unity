@@ -291,7 +291,7 @@ MonoBehaviour:
   _firePositionRight: {fileID: 93871150}
   _leftRotation: {x: 0, y: 0, z: 0.25881913, w: -0.9659258}
   _rightRotation: {x: 0, y: 0, z: 0.25881904, w: 0.9659258}
-  _fireSpeed: 3
+  _fireSpeed: 5
 --- !u!114 &23273016
 MonoBehaviour:
   m_ObjectHideFlags: 0

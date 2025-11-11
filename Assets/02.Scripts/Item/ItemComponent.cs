@@ -2,18 +2,29 @@ using UnityEngine;
 
 public abstract class ItemComponent : MonoBehaviour
 {
+    [Header("아이템 획득 이펙트")]
+    [SerializeField] private GameObject _particlePrefab;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") == false) return;
         Player player = collision.GetComponent<Player>();
 
         //아이템 효과 발동
-        ApplayEffect(player);
+        ApplyEffect(player);
+
+        // 아이템 파티클 효과
+        ItemParticleEffect(player);
 
         // 아이템 오브젝트 제거
         Destroy(gameObject);
     }
 
-    protected abstract void ApplayEffect(Player player);
+    protected abstract void ApplyEffect(Player player);
+
+    private void ItemParticleEffect(Player player)
+    {
+        Instantiate(_particlePrefab, player.transform.position, Quaternion.identity, player.transform);
+    }
 
 }

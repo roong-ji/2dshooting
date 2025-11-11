@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae09d2d646f1f74baaf0898ab3d43a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particlePrefab: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
   _speedupAmount: 1
 --- !u!50 &5702406350940890876
 Rigidbody2D:
