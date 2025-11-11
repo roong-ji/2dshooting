@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemDropper: {fileID: 0}
   _health: 100
+  _explosionPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
 --- !u!114 &23273015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb56ac04d76937c46b44beb4a343cce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMaterial: {fileID: 2100000, guid: a4c6a13d031cbb2469589e7debafd0fe, type: 2}
   _scrollSpeed: 0.3
 --- !u!1 &519420028
 GameObject:
@@ -1253,7 +1253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb56ac04d76937c46b44beb4a343cce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMaterial: {fileID: 2100000, guid: abe7b2fa89a6ef34c876de1f706bbad7, type: 2}
   _scrollSpeed: 0.2
 --- !u!1 &1556447383
 GameObject:
@@ -1390,7 +1389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb56ac04d76937c46b44beb4a343cce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backgroundMaterial: {fileID: 2100000, guid: bfc237faa75cdbb449a0523eb901c9d9, type: 2}
   _scrollSpeed: 0.1
 --- !u!1 &2010012700
 GameObject:
