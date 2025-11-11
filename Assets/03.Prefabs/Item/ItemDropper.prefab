@@ -48,5 +48,6 @@ MonoBehaviour:
   - {fileID: 3064062901601362279, guid: 1cf5c60b6e09a9349afc4d17cd8601b4, type: 3}
   - {fileID: 1454288444609054788, guid: 557d3e28467c5584fa5e7ff892148ea8, type: 3}
   - {fileID: 1761063731729653358, guid: fe231e6c2ca94474bbc325ebe1cd690e, type: 3}
-  _weights: 010000000300000005000000
+  _weights: 070000000200000001000000
+  _totalWeight: 10
   _dropRate: 1

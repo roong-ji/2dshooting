@@ -5,21 +5,12 @@ public class ItemDropper : MonoBehaviour
     [Header("아이템 목록")]
     [SerializeField] private GameObject[] _items;
     [SerializeField] private int[] _weights;
+    [SerializeField] private int _totalWeight;
 
     [Header("아이템 드랍 확률")]
     [SerializeField] private float _dropRate;
 
-    private int _totalWeight;
 
-    private void Start()
-    {
-        // 가중치 총합 계산
-        _totalWeight = 0;
-        foreach (var weight in _weights)
-        {
-            _totalWeight += weight;
-        }
-    }
 
     public void DropItem(Vector2 dropPosition)
     {
@@ -37,6 +28,7 @@ public class ItemDropper : MonoBehaviour
             ++itemIndex;
             randomWeight -= weight;
         }
+
         // 아이템 드랍
         Instantiate(_items[itemIndex], dropPosition, Quaternion.identity);
     }
