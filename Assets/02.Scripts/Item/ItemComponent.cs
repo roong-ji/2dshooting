@@ -16,7 +16,7 @@ public abstract class ItemComponent : MonoBehaviour
         Player player = collision.GetComponent<Player>();
 
         // 아이템 효과 발동
-        ApplayEffect(player);
+        ApplyEffect(player);
 
         // 아이템 획득 이펙트
         PlayItemEffect(player.transform);
@@ -30,6 +30,6 @@ public abstract class ItemComponent : MonoBehaviour
         _particleComponent.PlayParticleEffect(transform);
     }
 
-    protected abstract void ApplayEffect(Player player);
+    protected abstract void ApplyEffect(Player player);
 
 }
