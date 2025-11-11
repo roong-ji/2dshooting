@@ -32,6 +32,7 @@ public class ChaseMovementComponent : MovementComponent
         // 설정된 방향으로 이동
         _rigidbody2D.linearVelocity = _direction * _speed;
     }
+
     private void KnockbackMove()
     {
         if (_isKnockback == false) return;
