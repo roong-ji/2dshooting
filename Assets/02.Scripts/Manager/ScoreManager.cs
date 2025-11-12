@@ -15,22 +15,35 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
+        RefreshScore();
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S)) SaveScore();
-        if (Input.GetKeyUp(KeyCode.L)) LoadScore();
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            SaveScore();
+            RefreshScore();
+        }
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            LoadScore();
+            RefreshScore();
+        }
 
 
-        RefreshScore();
+        UpdateScore();
+    }
+
+    private void UpdateScore()
+    {
+        _textScore = Mathf.Lerp(_textScore, _currentScore, _lerpSpeed * Time.deltaTime);
+        _currentScoreTextUI.text = $"현재 점수 : {Mathf.RoundToInt(_textScore)}";
     }
 
     private void RefreshScore()
     {
-        _textScore = Mathf.Lerp(_textScore, _currentScore, _lerpSpeed * Time.deltaTime);
-        _currentScoreTextUI.text = $"현재 점수 : {Mathf.RoundToInt(_textScore)}";
+        _currentScoreTextUI.text = $"현재 점수 : {Mathf.RoundToInt(_currentScore)}";
     }
 
     public void AddScore(int score)

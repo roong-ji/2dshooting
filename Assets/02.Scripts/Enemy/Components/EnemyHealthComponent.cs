@@ -14,14 +14,10 @@ public class EnemyHealthComponent : HealthComponent
 
         if (_health > 0f) return;
         MakeExplosionEffect();
-        DropItem();
-        AddScore();
-        Destroy(gameObject);
-
+        Death();
     }
     private void DropItem()
     {
-
         if (_itemDropper == null) return;
         _itemDropper.DropItem(transform.position);
     }
@@ -31,6 +27,13 @@ public class EnemyHealthComponent : HealthComponent
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         if (_scoreManager == null) return;
         _scoreManager.AddScore(_score);
+    }
+
+    public void Death()
+    {
+        DropItem();
+        AddScore();
+        Destroy(gameObject);
     }
 
 }

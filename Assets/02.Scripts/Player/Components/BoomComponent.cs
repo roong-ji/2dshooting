@@ -17,6 +17,10 @@ public class BoomComponent : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") == false) return;
         _particleComponent.PlayParticleEffect(collision.transform.position);
-        Destroy(collision.gameObject);
+
+        EnemyHealthComponent enemy = collision.GetComponent<EnemyHealthComponent>();
+
+        if (enemy == null) Destroy(collision.gameObject);
+        else enemy.Death();
     }
 }
