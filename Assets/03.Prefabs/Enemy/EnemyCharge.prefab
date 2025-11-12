@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6176923757351824484}
   - component: {fileID: -5031708002172254640}
   - component: {fileID: 8937453123069356470}
-  - component: {fileID: -613797259271077554}
+  - component: {fileID: 7544550939750704387}
   - component: {fileID: -1666855622657628985}
   - component: {fileID: 1553422409570958130}
   - component: {fileID: 1613313987362607262}
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: -5031708002172254640}
   damageRate: 1
---- !u!114 &-613797259271077554
+--- !u!114 &7544550939750704387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,11 +207,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2368801934644374789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
+  m_Script: {fileID: 11500000, guid: 3caaf86107fc8a44fa2dd0b43f954294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _health: 100
+  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
+  _scoreManagerPrefab: {fileID: 7819502367831569211, guid: 511aa6b69ada8984c8901f9036772238, type: 3}
+  _score: 100
 --- !u!114 &-1666855622657628985
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 3281503512113169955}
   - component: {fileID: 2478462623523027235}
   - component: {fileID: 4888551535792464986}
-  - component: {fileID: 7182192259089092744}
   - component: {fileID: 7423438530677424093}
   - component: {fileID: -8864143970955112945}
   - component: {fileID: 822079095385659039}
+  - component: {fileID: 808187092878464274}
   - component: {fileID: -5887048132281181034}
   m_Layer: 8
   m_Name: EnemyEvade
@@ -193,20 +193,6 @@ MonoBehaviour:
   _evadeVector:
   - {x: -3, y: 0}
   - {x: 3, y: 0}
---- !u!114 &7182192259089092744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004280197912245676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382b725511e726a418cb553bec2d9190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
-  _health: 100
 --- !u!114 &7423438530677424093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +232,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 7322616066679021973}
   damageRate: 1
+--- !u!114 &808187092878464274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004280197912245676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3caaf86107fc8a44fa2dd0b43f954294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+  _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
+  _scoreManagerPrefab: {fileID: 7819502367831569211, guid: 511aa6b69ada8984c8901f9036772238, type: 3}
+  _score: 100
 --- !u!95 &-5887048132281181034
 Animator:
   serializedVersion: 7
