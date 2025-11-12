@@ -4,7 +4,6 @@ public class EnemyHealthComponent : HealthComponent
 {
     [SerializeField] private ItemDropper _itemDropper;
     private ScoreManager _scoreManager;
-    private SoundManager _soundManager;
 
     [Header("점수")]
     [SerializeField] private int _score;
@@ -29,7 +28,7 @@ public class EnemyHealthComponent : HealthComponent
         if (_scoreManager == null) return;
         _scoreManager.AddScore(_score);
     }
-    private void PlayDeathSound()
+    protected override void PlayDeathSound()
     {
         _soundManager = FindAnyObjectByType<SoundManager>();
         if (_soundManager == null) return;

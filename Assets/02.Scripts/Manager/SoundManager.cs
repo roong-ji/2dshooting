@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource _skillSound;
 
+    [SerializeField] private AudioSource _gameOverSound;
+
     private int _deathSoundIndex = 0;
     private int _itemSoundIndex = 0;
 
@@ -29,6 +31,11 @@ public class SoundManager : MonoBehaviour
     public void PlaySkillSound()
     {
         _skillSound.Play();
+    }
+
+    public void PlayGameOverSound()
+    {
+        _gameOverSound.Play();
     }
 
 }
