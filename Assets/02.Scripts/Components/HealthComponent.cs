@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private ItemDropper _itemDropper;
-
     [Header("체력")]
-    [SerializeField] private float _health;
+    [SerializeField] protected float _health;
 
     private ParticleComponent _particleComponent;
 
@@ -14,27 +12,20 @@ public class HealthComponent : MonoBehaviour
         _particleComponent = GetComponent<ParticleComponent>();
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         _health -= damage;
 
         if (_health > 0f) return;
         MakeExplosionEffect();
-        DropItem();
         Destroy(gameObject);
         
     }
 
-    private void MakeExplosionEffect()
+    protected void MakeExplosionEffect()
     {
+        if(_particleComponent ==null) return;
         _particleComponent.PlayParticleEffect();
-    }
-
-    private void DropItem()
-    {
-
-        if (_itemDropper == null) return;
-        _itemDropper.DropItem(transform.position);
     }
 
     public void Heal(float amount)
