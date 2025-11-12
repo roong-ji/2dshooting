@@ -96,3 +96,4 @@ custom_instructions: |
   8. Use PascalCase for constants
   9. Use [SerializeField] only for uGUI components
   10. Provide Korean comments for better understanding (한국어 주석 포함)
+  11. 모든 내용을 한국어로 작성

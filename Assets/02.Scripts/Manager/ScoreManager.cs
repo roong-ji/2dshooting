@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
 
     private float _textScore = 0;
     private int _currentScore = 0;
-    private float _lerpSpeed = 10f;
+    private float _lerpSpeed = 15f;
 
     private void Start()
     {
