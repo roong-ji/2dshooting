@@ -28,8 +28,8 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        //_userData = LoadData();
-        //_bestScore = _userData.BestScore;
+        _userData = LoadData();
+        _bestScore = _userData.BestScore;
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
     }
@@ -42,6 +42,17 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt(_scoreKey, 0);
             _bestScore = 0;
             _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveData(_userData);
+            Debug.Log($"저장 : {_userData.BestScore}");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _userData = LoadData();
+            Debug.Log($"로드 : {_userData.BestScore}");
         }
 #endif
 
@@ -78,23 +89,23 @@ public class ScoreManager : MonoBehaviour
         _bestScoreTextUI.rectTransform.localScale = _originScale * MaxScale;
         _bestScore = _currentScore;
 
-        //_userData.BestScore = _bestScore;
-        //SaveData(_userData);
+        _userData.BestScore = _bestScore;
+        SaveData(_userData);
     }
 
     private void SaveData(UserData data)
     {
-        string jsonString = JsonUtility.ToJson(data);
+        string jsonData = JsonUtility.ToJson(data);
 
-        PlayerPrefs.SetString(DATA_KEY, jsonString);
+        PlayerPrefs.SetString(DATA_KEY, jsonData);
         PlayerPrefs.Save();
     }
 
     private UserData LoadData()
     {
-        if (PlayerPrefs.HasKey(DATA_KEY)) return new UserData();
+        if (PlayerPrefs.HasKey(DATA_KEY) == false) return new UserData();
 
-        string jsonString = PlayerPrefs.GetString(DATA_KEY);
-        return JsonUtility.FromJson<UserData>(jsonString);
+        string jsonData = PlayerPrefs.GetString(DATA_KEY);
+        return JsonUtility.FromJson<UserData>(jsonData);
     }
 }
