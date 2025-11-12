@@ -9,21 +9,22 @@ public class BackgroundScroll : MonoBehaviour
     private MaterialPropertyBlock _backgroundMpb;
 
     //private Vector2 direction = Vector2.up;
-    private Vector4 offsetVector = Vector4.zero;
+    private Vector4 _offsetVector = Vector4.zero;
+    private int _offsetId = Shader.PropertyToID("_MainTex_ST");
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _backgroundMpb = new MaterialPropertyBlock();
         _spriteRenderer.GetPropertyBlock(_backgroundMpb);
-        offsetVector.x = 1;
-        offsetVector.y = 1;
+        _offsetVector.x = 1;
+        _offsetVector.y = 1;
     }
 
     private void Update()
     {
-        offsetVector.w += _scrollSpeed * Time.deltaTime;
-        _backgroundMpb.SetVector("_MainTex_ST", offsetVector);
+        _offsetVector.w += _scrollSpeed * Time.deltaTime;
+        _backgroundMpb.SetVector(_offsetId, _offsetVector);
 
         _spriteRenderer.SetPropertyBlock(_backgroundMpb);
 
