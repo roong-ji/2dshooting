@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 1004280197912245676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,7 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
-  _scoreManagerPrefab: {fileID: 7819502367831569211, guid: 511aa6b69ada8984c8901f9036772238, type: 3}
   _score: 100
 --- !u!95 &-5887048132281181034
 Animator:

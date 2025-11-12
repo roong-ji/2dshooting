@@ -4,61 +4,83 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    // 적 처지 시 점수를 올리고 현재 점수를 UI에 표시
-    [SerializeField] private Text _currentScoreTextUI; // UI 요소는 변수명 뒤에 UI 붙임
+    // UI 요소는 변수명 뒤에 UI 붙임
+    [SerializeField] private Text _bestScoreTextUI;
+    [SerializeField] private Text _currentScoreTextUI;
 
     private string _scoreKey = "Score";
 
-    private float _textScore = 0;
+    private int _bestScore = 0;
     private int _currentScore = 0;
-    private float _lerpSpeed = 15f;
+    
+    private float _textScore = 0;
+    private float _textBestScore = 0;
+    private float _timer = 0f;
+    private float _lerpTime = 1f;
+
+    private float _maxScale = 1.5f;
+    private Vector3 _originScale = Vector3.one;
+
+    private string _current = "현재";
+    private string _best = "최고";
 
     private void Start()
     {
-        RefreshScore();
+        LoadScore();
+        _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
+        _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            SaveScore();
-            RefreshScore();
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            LoadScore();
-            RefreshScore();
+            PlayerPrefs.SetInt(_scoreKey, 0);
+            _bestScore = 0;
+            _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
         }
 
+        _timer += Time.deltaTime;
 
-        UpdateScore();
+        if (_timer > _lerpTime) return;
+        LerpScore(_currentScoreTextUI, ref _textScore, ref _current);
+
+        if (_bestScore > _currentScore) return;
+        LerpScore(_bestScoreTextUI, ref _textBestScore, ref _best);
     }
 
-    private void UpdateScore()
+    private void LerpScore(Text text, ref float score, ref string type)
     {
-        _textScore = Mathf.Lerp(_textScore, _currentScore, _lerpSpeed * Time.deltaTime);
-        _currentScoreTextUI.text = $"현재 점수 : {Mathf.RoundToInt(_textScore)}";
-    }
+        score = Mathf.Lerp(score, _currentScore, _timer / _lerpTime);
+        text.text = $"{type} 점수 : {Mathf.RoundToInt(score)}";
 
-    private void RefreshScore()
-    {
-        _currentScoreTextUI.text = $"현재 점수 : {Mathf.RoundToInt(_currentScore)}";
+        text.rectTransform.localScale = Vector3.Lerp(
+        text.rectTransform.localScale,
+        _originScale,
+        _timer / _lerpTime
+        );
     }
 
     public void AddScore(int score)
     {
+        _timer = 0f;
         _currentScore += score;
+        _currentScoreTextUI.rectTransform.localScale = _originScale * _maxScale;
+
+        if (_bestScore > _currentScore) return;
+        _bestScoreTextUI.rectTransform.localScale = _originScale * _maxScale;
+        _bestScore = _currentScore;
+        SaveScore();
     }
 
     private void SaveScore()
     {
-        PlayerPrefs.SetInt(_scoreKey, _currentScore);
+        PlayerPrefs.SetInt(_scoreKey, _bestScore);
     }
 
     private void LoadScore()
     {
-        _currentScore = PlayerPrefs.GetInt(_scoreKey, 0);
+        _bestScore = PlayerPrefs.GetInt(_scoreKey, 0);
     }
 
     /*
