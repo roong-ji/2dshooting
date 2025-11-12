@@ -5,8 +5,12 @@ public class SoundManager : MonoBehaviour
     [Header("사운드 목록")]
     [SerializeField] private AudioClip[] _enemyDeathSounds;
     [SerializeField] private AudioSource _enemyDeathSound;
+
     [SerializeField] private AudioClip[] _itemSounds;
     [SerializeField] private AudioSource _itemSound;
+
+    [SerializeField] private AudioSource _skillSound;
+
     private int _deathSoundIndex = 0;
     private int _itemSoundIndex = 0;
 
@@ -20,6 +24,11 @@ public class SoundManager : MonoBehaviour
     {
         _itemSound.PlayOneShot(_itemSounds[_itemSoundIndex]);
         _itemSoundIndex = ++_itemSoundIndex % _itemSounds.Length;
+    }
+
+    public void PlaySkillSound()
+    {
+        _skillSound.Play();
     }
 
 }
