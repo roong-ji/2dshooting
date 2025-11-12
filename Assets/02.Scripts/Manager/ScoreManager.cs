@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,7 +7,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text _bestScoreTextUI;
     [SerializeField] private Text _currentScoreTextUI;
 
+    private UserData _userData;
     private string _scoreKey = "Score";
+    private const string DATA_KEY = "PlayerData";
 
     private int _bestScore = 0;
     private int _currentScore = 0;
@@ -24,9 +25,11 @@ public class ScoreManager : MonoBehaviour
     private string _current = "현재";
     private string _best = "최고";
 
+
     private void Start()
     {
-        LoadScore();
+        //_userData = LoadData();
+        //_bestScore = _userData.BestScore;
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
     }
@@ -57,9 +60,9 @@ public class ScoreManager : MonoBehaviour
         text.text = $"{type} 점수 : {Mathf.RoundToInt(score)}";
 
         text.rectTransform.localScale = Vector3.Lerp(
-        text.rectTransform.localScale,
-        _originScale,
-        _timer / LerpTime
+            text.rectTransform.localScale,
+            _originScale,
+            _timer / LerpTime
         );
     }
 
@@ -74,43 +77,24 @@ public class ScoreManager : MonoBehaviour
         if (_bestScore > _currentScore) return;
         _bestScoreTextUI.rectTransform.localScale = _originScale * MaxScale;
         _bestScore = _currentScore;
-        SaveScore();
+
+        //_userData.BestScore = _bestScore;
+        //SaveData(_userData);
     }
 
-    private void SaveScore()
+    private void SaveData(UserData data)
     {
-        PlayerPrefs.SetInt(_scoreKey, _bestScore);
+        string jsonString = JsonUtility.ToJson(data);
+
+        PlayerPrefs.SetString(DATA_KEY, jsonString);
+        PlayerPrefs.Save();
     }
 
-    private void LoadScore()
+    private UserData LoadData()
     {
-        _bestScore = PlayerPrefs.GetInt(_scoreKey, 0);
-    }
+        if (PlayerPrefs.HasKey(DATA_KEY)) return new UserData();
 
-    /*
-    private void TestSave()
-    {
-        // 유니티에서 값을 저장할 때 PlayerPrefs 모듈을 사용
-        // 저장 가능한 자료형 : int, float, string
-        // 이름 key, 값 value 형태로 저장
-        PlayerPrefs.SetInt("level", 22);
-        PlayerPrefs.SetString("name", "최강전사");
-        Debug.Log("저장 완료");
+        string jsonString = PlayerPrefs.GetString(DATA_KEY);
+        return JsonUtility.FromJson<UserData>(jsonString);
     }
-
-    private void TestLoad()
-    {
-        // 데이터가 있는지 검증
-        // 직접 검사 방식
-        int level = 0; // 기본 값
-        if (PlayerPrefs.HasKey("level"))
-        {
-            level = PlayerPrefs.GetInt("level");
-        }
-
-        // default 인자
-        string name = PlayerPrefs.GetString("name", "이름없는모험가");
-        Debug.Log($"{name} : {level}");
-    }
-    */
 }

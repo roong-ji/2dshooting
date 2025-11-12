@@ -3,6 +3,8 @@ using UnityEngine.UIElements;
 
 public class PlayerFireComponent : FireComponent
 {
+    [Header("사운드")]
+    [SerializeField] private AudioSource _fireSound;
 
     private bool _fireRequested = false;
 
@@ -19,6 +21,9 @@ public class PlayerFireComponent : FireComponent
         // 총알 발사
         Instantiate(_bulletPrefab[_bulletType], _firePositionLeft.position, _leftRotation);
         Instantiate(_bulletPrefab[_bulletType], _firePositionRight.position, _rightRotation);
+
+        // 사운드 재생
+        _fireSound.Play();
 
         // 다음 총알 장전
         _bulletType = ++_bulletType % _typeNumber;
