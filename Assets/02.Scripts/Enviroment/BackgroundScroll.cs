@@ -6,7 +6,6 @@ public class BackgroundScroll : MonoBehaviour
     [SerializeField] private float _scrollSpeed;
 
     private SpriteRenderer _spriteRenderer;
-    private Material _backgroundMaterial;
     private MaterialPropertyBlock _backgroundMpb;
 
     //private Vector2 direction = Vector2.up;
@@ -15,7 +14,6 @@ public class BackgroundScroll : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _backgroundMaterial = _spriteRenderer.material;
         _backgroundMpb = new MaterialPropertyBlock();
         _spriteRenderer.GetPropertyBlock(_backgroundMpb);
         offsetVector.x = 1;
