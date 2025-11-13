@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class FollowMove : MonoBehaviour
+public class FollowTargetComponent : MonoBehaviour
 {
+    [Header("타겟 정보")]
     [SerializeField] private Transform _targetTransform;
     private Queue<Vector2> _targetPositions;
     
