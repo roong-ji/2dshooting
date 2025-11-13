@@ -36,12 +36,6 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            _bestScore = 0;
-            _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
-        }
-
         if (Input.GetKeyDown(KeyCode.S))
         {
             SaveData(_userData);
