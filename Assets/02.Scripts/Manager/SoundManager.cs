@@ -2,6 +2,22 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    private static SoundManager _instance;
+    public static SoundManager Instance
+    {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
+    }
+
     [Header("사운드 목록")]
     [SerializeField] private AudioClip[] _enemyDeathSounds;
     [SerializeField] private AudioSource _enemyDeathSound;

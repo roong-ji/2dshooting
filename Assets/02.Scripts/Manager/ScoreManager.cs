@@ -3,6 +3,22 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    private static ScoreManager _instance;
+    public static ScoreManager Instance
+    {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
+    }
+
     // UI 요소는 변수명 뒤에 UI를 붙인다.
     [SerializeField] private Text _bestScoreTextUI;
     [SerializeField] private Text _currentScoreTextUI;
@@ -23,7 +39,6 @@ public class ScoreManager : MonoBehaviour
 
     private const string CURRENT = "현재";
     private const string BEST = "최고";
-
 
     private void Start()
     {

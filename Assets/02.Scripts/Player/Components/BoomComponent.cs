@@ -7,16 +7,11 @@ public class BoomComponent : MonoBehaviour
 
     private ParticleComponent _particleComponent;
 
-    private SoundManager _soundManager;
-
     private void Awake()
     {
         _particleComponent = GetComponent<ParticleComponent>();
+        SoundManager.Instance.PlaySkillSound();
         Destroy(gameObject, _boomDuration);
-
-        _soundManager = FindAnyObjectByType<SoundManager>();
-        if (_soundManager == null) return;
-        _soundManager.PlaySkillSound();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

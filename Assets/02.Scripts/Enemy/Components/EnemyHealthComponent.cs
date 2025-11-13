@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyHealthComponent : HealthComponent
 {
     [SerializeField] private ItemDropper _itemDropper;
-    private ScoreManager _scoreManager;
 
     [Header("점수")]
     [SerializeField] private int _score;
@@ -24,15 +23,11 @@ public class EnemyHealthComponent : HealthComponent
 
     private void AddScore()
     {
-        _scoreManager = FindAnyObjectByType<ScoreManager>();
-        if (_scoreManager == null) return;
-        _scoreManager.AddScore(_score);
+        ScoreManager.Instance.AddScore(_score);
     }
     protected override void PlayDeathSound()
     {
-        _soundManager = FindAnyObjectByType<SoundManager>();
-        if (_soundManager == null) return;
-        _soundManager.PlayDeathSound();
+        SoundManager.Instance.PlayDeathSound();
     }
 
     public void Death()
