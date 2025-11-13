@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public abstract class KnockbackComponent : MovementComponent
+{
+    [Header("넉백 시간")]
+    [SerializeField] private float _knockbackDuration;
+    private bool _isKnockback = false;
+    float _timer = 0f;
+
+    private float _originSpeed;
+    private Vector2 _originDirection;
+
+    private void Awake()
+    {
+        _originSpeed = _speed;
+        _originDirection = _direction;
+    }
+
+    protected void KnockbackMove()
+    {
+        if (_isKnockback == false) return;
+
+        _timer += Time.fixedDeltaTime;
+
+        if (_timer >= _knockbackDuration)
+        {
+            _isKnockback = false;
+            _direction = _originDirection;
+            return;
+        }
+
+        _speed = Mathf.Lerp(_speed, _originSpeed, _timer / _knockbackDuration);
+    }
+
+    public  void Knockback()
+    {
+        _timer = 0f;
+        _isKnockback = true;
+        _speed = -_originSpeed;
+    }
+}

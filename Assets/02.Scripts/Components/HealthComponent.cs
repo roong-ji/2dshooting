@@ -6,7 +6,6 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] protected float _health;
 
     private ParticleComponent _particleComponent;
-    protected SoundManager _soundManager;
 
     private void Awake()
     {
@@ -31,9 +30,7 @@ public class HealthComponent : MonoBehaviour
     }
     protected virtual void PlayDeathSound()
     {
-        _soundManager = FindAnyObjectByType<SoundManager>();
-        if (_soundManager == null) return;
-        _soundManager.PlayGameOverSound();
+        SoundManager.Instance.PlayGameOverSound();
     }
 
     public void Heal(float amount)

@@ -4,7 +4,6 @@ public abstract class ItemComponent : MonoBehaviour
 {
 
     private ParticleComponent _particleComponent;
-    private SoundManager _soundManager;
 
     private void Awake()
     {
@@ -36,9 +35,7 @@ public abstract class ItemComponent : MonoBehaviour
 
     private void PlayItemSound()
     {
-        _soundManager = FindAnyObjectByType<SoundManager>();
-        if (_soundManager == null) return;
-        _soundManager.PlayItemSound();
+        SoundManager.Instance.PlayItemSound();
     }
 
     protected abstract void ApplyEffect(Player player);

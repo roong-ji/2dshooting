@@ -1,22 +1,15 @@
 using UnityEngine;
 
-public class ChaseMovementComponent : MovementComponent
+public class ChaseMovementComponent : KnockbackComponent
 {
     private Transform _playerTransform;
     private Vector2 _directionToPlayer;
-
-    private float _timer = 0f;
-    private float _knockbackDuration = 0.5f;
-    private bool _isKnockback = false;
-
-    private float _originSpeed;
 
     private void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
         _playerTransform = player.transform;
-        _originSpeed = _speed;
     }
 
     protected override void Move()
@@ -34,26 +27,5 @@ public class ChaseMovementComponent : MovementComponent
 
         // 설정된 방향으로 이동
         _rigidbody2D.linearVelocity = _direction * _speed;
-    }
-
-    private void KnockbackMove()
-    {
-        if (_isKnockback == false) return;
-
-        _timer += Time.fixedDeltaTime;
-
-        if (_timer >= _knockbackDuration)
-        {
-            _isKnockback = false;
-            return;
-        }
-
-        _speed = Mathf.Lerp(_speed, _originSpeed, _timer / _knockbackDuration);
-    }
-    public override void Knockback()
-    {
-        _timer = 0f;
-        _isKnockback = true;
-        _speed = -_originSpeed;
     }
 }
