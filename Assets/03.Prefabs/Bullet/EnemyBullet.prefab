@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 2
   _criticalRate: 0
-  _bulletType: 1
+  _bulletType: 2
 --- !u!114 &7006429113796811215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +184,4 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 8304930981546638990}
   _speed: 5
   _direction: {x: 0, y: -1}
+  _knockbackDuration: 0

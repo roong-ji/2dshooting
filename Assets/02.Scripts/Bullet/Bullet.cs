@@ -1,9 +1,11 @@
 using UnityEngine;
 
-enum EBulletType
+public enum EBulletType
 {
-    PlayerBullet,
-    EnemyBullet
+    PlayerBullet = 0,
+    PlayerSmallBullet = 1,
+    EnemyBullet = 2,
+    PetBullet = 3,
 }
 
 public class Bullet : MonoBehaviour
@@ -18,7 +20,7 @@ public class Bullet : MonoBehaviour
 
     private bool ShouldHit(GameObject target)
     {
-        if(_bulletType == EBulletType.PlayerBullet && 
+        if(_bulletType != EBulletType.EnemyBullet && 
             target.CompareTag("Enemy"))
         {
             AttackEnemy(target);

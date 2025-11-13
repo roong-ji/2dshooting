@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class PlayerFireComponent : FireComponent
 {
     private bool _fireRequested = false;
+    private int _bulletIndex = 0;
 
     // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함
     protected override void Fire()
@@ -16,11 +17,11 @@ public class PlayerFireComponent : FireComponent
         if (1f / _fireSpeed > _timer) return;
 
         // 총알 발사
-        Instantiate(_bulletPrefab[_bulletType], _firePositionLeft.position, _leftRotation);
-        Instantiate(_bulletPrefab[_bulletType], _firePositionRight.position, _rightRotation);
+        BulletFactory.Instance.MakeBullet(_bulletTypes[_bulletIndex], _firePosition[0].position, _fireRotation[0]);
+        BulletFactory.Instance.MakeBullet(_bulletTypes[_bulletIndex], _firePosition[1].position, _fireRotation[1]);
 
         // 다음 총알 장전
-        _bulletType = ++_bulletType % _typeNumber;
+        _bulletIndex = ++_bulletIndex % _bulletTypes.Length;
         _timer = 0f;
     }
 

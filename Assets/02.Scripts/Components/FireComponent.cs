@@ -2,15 +2,9 @@ using UnityEngine;
 
 public abstract class FireComponent : MonoBehaviour
 {
-    [Header("총알 프리팹")]
-    [SerializeField] protected GameObject[] _bulletPrefab;
-
     [Header("발사 위치")]
-    [SerializeField] protected Transform _firePositionLeft;
-    [SerializeField] protected Transform _firePositionRight;
-
-    [SerializeField] protected Quaternion _leftRotation;
-    [SerializeField] protected Quaternion _rightRotation;
+    [SerializeField] protected Transform[] _firePosition;
+    [SerializeField] protected Quaternion[] _fireRotation;
 
     protected float _timer = 0f;
 
@@ -18,14 +12,8 @@ public abstract class FireComponent : MonoBehaviour
     [Tooltip("1초당 공격 횟수")]
     [SerializeField] protected float _fireSpeed;
 
-    protected int _bulletType; // 현재 총알 종류
-    protected int _typeNumber; // 총알 종류 개수
-
-    private void Start()
-    {
-        _bulletType = 0;
-        _typeNumber = _bulletPrefab.Length;
-    }
+    [Header("총알 종류")]
+    [SerializeField] protected EBulletType[] _bulletTypes;
 
     private void Update()
     {

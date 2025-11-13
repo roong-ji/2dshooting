@@ -226,8 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 4574282418944773859}
-  _speed: 3
+  _speed: 3.5
   _direction: {x: 0, y: 0}
+  _knockbackDuration: 0.5
 --- !u!114 &-7396945950862206205
 MonoBehaviour:
   m_ObjectHideFlags: 0

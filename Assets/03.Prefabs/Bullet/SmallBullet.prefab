@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 40
   _criticalRate: 0.3
-  _bulletType: 0
+  _bulletType: 1
 --- !u!114 &-5038102385010713674
 MonoBehaviour:
   m_ObjectHideFlags: 0
