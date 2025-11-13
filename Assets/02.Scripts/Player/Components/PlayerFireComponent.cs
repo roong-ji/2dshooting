@@ -3,7 +3,6 @@ using UnityEngine.UIElements;
 
 public class PlayerFireComponent : FireComponent
 {
-
     private bool _fireRequested = false;
 
     // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함

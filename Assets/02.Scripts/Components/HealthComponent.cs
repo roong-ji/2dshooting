@@ -6,6 +6,7 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] protected float _health;
 
     private ParticleComponent _particleComponent;
+    protected SoundManager _soundManager;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class HealthComponent : MonoBehaviour
 
         if (_health > 0f) return;
         MakeExplosionEffect();
+        PlayDeathSound();
         Destroy(gameObject);
         
     }
@@ -26,6 +28,12 @@ public class HealthComponent : MonoBehaviour
     {
         if(_particleComponent ==null) return;
         _particleComponent.PlayParticleEffect();
+    }
+    protected virtual void PlayDeathSound()
+    {
+        _soundManager = FindAnyObjectByType<SoundManager>();
+        if (_soundManager == null) return;
+        _soundManager.PlayGameOverSound();
     }
 
     public void Heal(float amount)

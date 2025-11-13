@@ -28,11 +28,18 @@ public class EnemyHealthComponent : HealthComponent
         if (_scoreManager == null) return;
         _scoreManager.AddScore(_score);
     }
+    protected override void PlayDeathSound()
+    {
+        _soundManager = FindAnyObjectByType<SoundManager>();
+        if (_soundManager == null) return;
+        _soundManager.PlayDeathSound();
+    }
 
     public void Death()
     {
         DropItem();
         AddScore();
+        PlayDeathSound();
         Destroy(gameObject);
     }
 
