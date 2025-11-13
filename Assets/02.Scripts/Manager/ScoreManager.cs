@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text _currentScoreTextUI;
 
     private UserData _userData;
-    private string _scoreKey = "Score";
     private const string DATA_KEY = "PlayerData";
 
     private int _bestScore = 0;
@@ -17,13 +16,13 @@ public class ScoreManager : MonoBehaviour
     private float _textScore = 0;
     private float _textBestScore = 0;
     private float _timer = 0f;
-    private const float LerpTime = 1f;
+    private const float LERP_TIME = 1f;
 
-    private const float MaxScale = 1.5f;
+    private const float MAX_SACLE = 1.5f;
     private readonly Vector3 _originScale = Vector3.one;
 
-    private string _current = "현재";
-    private string _best = "최고";
+    private const string CURRENT = "현재";
+    private const string BEST = "최고";
 
 
     private void Start()
@@ -39,7 +38,6 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F))
         {
-            PlayerPrefs.SetInt(_scoreKey, 0);
             _bestScore = 0;
             _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
         }
@@ -58,22 +56,22 @@ public class ScoreManager : MonoBehaviour
 
         _timer += Time.deltaTime;
 
-        if (_timer > LerpTime) return;
-        LerpScore(_currentScoreTextUI, ref _textScore, _current);
+        if (_timer > LERP_TIME) return;
+        LerpScore(_currentScoreTextUI, ref _textScore, CURRENT);
 
         if (_bestScore > _currentScore) return;
-        LerpScore(_bestScoreTextUI, ref _textBestScore, _best);
+        LerpScore(_bestScoreTextUI, ref _textBestScore, BEST);
     }
 
     private void LerpScore(Text text, ref float score, string type)
     {
-        score = Mathf.Lerp(score, _currentScore, _timer / LerpTime);
+        score = Mathf.Lerp(score, _currentScore, _timer / LERP_TIME);
         text.text = $"{type} 점수 : {Mathf.RoundToInt(score)}";
 
         text.rectTransform.localScale = Vector3.Lerp(
             text.rectTransform.localScale,
             _originScale,
-            _timer / LerpTime
+            _timer / LERP_TIME
         );
     }
 
@@ -81,12 +79,12 @@ public class ScoreManager : MonoBehaviour
     {
         _timer = 0f;
         _currentScore += score;
-        _currentScoreTextUI.rectTransform.localScale = _originScale * MaxScale;
+        _currentScoreTextUI.rectTransform.localScale = _originScale * MAX_SACLE;
 
         //_currentScoreTextUI.rectTransform.DOScale(_originScale, _lerpTime);
 
         if (_bestScore > _currentScore) return;
-        _bestScoreTextUI.rectTransform.localScale = _originScale * MaxScale;
+        _bestScoreTextUI.rectTransform.localScale = _originScale * MAX_SACLE;
         _bestScore = _currentScore;
 
         _userData.BestScore = _bestScore;
