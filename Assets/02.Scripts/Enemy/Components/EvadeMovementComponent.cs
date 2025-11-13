@@ -18,6 +18,6 @@ public class EvadeMovementComponent : KnockbackComponent
     private void Evade()
     {
         Knockback();
-        _direction = Random.insideUnitCircle * _evadeForce;
+        _direction = Random.insideUnitCircle.normalized * _evadeForce;
     }
 }
