@@ -6,11 +6,6 @@ public class ChargeMovementComponent : MovementComponent
     private float _knockbackDuration = 0.5f;
     private bool _isKnockback = false;
 
-    private void Start()
-    {
-        _direction = Vector2.down;
-    }
-
     protected override void Move()
     {
         _rigidbody2D.linearVelocity = _direction * _speed;
