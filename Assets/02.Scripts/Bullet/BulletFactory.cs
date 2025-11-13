@@ -70,12 +70,13 @@ public class BulletFactory : MonoBehaviour
     {
         ref int index = ref _bullets[(int)bulletType].Index;
         int size = _bullets[(int)bulletType].PoolSize;
-        index = index++ % size;
 
         GameObject bullet = _bulletPools[bulletType][index];
         bullet.transform.position = position;
         bullet.transform.rotation = quaternion;
         bullet.SetActive(true);
+
+        index = ++index % size;
 
         return bullet;
     }

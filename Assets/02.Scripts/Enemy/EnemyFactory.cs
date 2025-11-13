@@ -69,12 +69,13 @@ public class EnemyFactory : MonoBehaviour
     {
         ref int index = ref _enemyes[(int)enemyType].Index;
         int size = _enemyes[(int)enemyType].PoolSize;
-        index = index++ % size;
 
         GameObject enemy = _enemyPools[enemyType][index];
         enemy.transform.position = position;
         enemy.transform.rotation = quaternion;
         enemy.SetActive(true);
+
+        index = ++index % size;
 
         return enemy;
     }

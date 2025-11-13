@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("몬스터 프리팹")]
-    [SerializeField] private GameObject[] _enemyPrefab;
-
     [Header("스폰 확률")]
     [SerializeField] private float[] _spawnChance;
 
@@ -17,7 +14,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
 
+    Vector2 spawnPosition;
     private float _timer = 0f;
+
+    private void Awake()
+    {
+        spawnPosition = transform.position;
+    }
 
     private void Update()
     {
@@ -31,13 +34,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int enemyType = Random.value < _spawnChance[0] ? 0 : 1;
-        enemyType = Random.value < _spawnChance[1] ? enemyType : 2;
-        GameObject enemy = Instantiate(_enemyPrefab[enemyType]);
+        EEnemyType enemyType = Random.value < _spawnChance[0] ? EEnemyType.Charge : EEnemyType.Chase;
+        enemyType = Random.value < _spawnChance[1] ? enemyType : EEnemyType.Evade;
 
-        Vector3 pos = enemy.transform.position;
-        pos.x = Random.Range(_minSpawnX, _maxSpawnX);
-        enemy.transform.position = pos;
+        spawnPosition.x = Random.Range(_minSpawnX, _maxSpawnX);
+
+        EnemyFactory.Instance.MakeEnemy(enemyType, spawnPosition, Quaternion.identity);
 
         _spawnInterval = Random.Range(_minSpawnInterval, _maxSpawnInterval);
     }

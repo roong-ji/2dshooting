@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _maxHealth: 0
+  _maxHealth: 100
 --- !u!114 &23273015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,10 +555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae4429b709920d4c8466a73087cd021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab:
-  - {fileID: 2368801934644374789, guid: 0e9c6c96b0464f542b6049c57c49e186, type: 3}
-  - {fileID: 1816798911127756622, guid: 88a2652f25cc73b4a9110a7acfd11a0d, type: 3}
-  - {fileID: 1004280197912245676, guid: 91a941661142aa547b98b820a720bb48, type: 3}
   _spawnChance:
   - 0.5
   - 0.7
@@ -2746,7 +2742,7 @@ GameObject:
   m_Layer: 0
   m_Name: 'EnemyFactory '
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
