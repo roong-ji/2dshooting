@@ -4,13 +4,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private HealthComponent _healthComponent;
-    private MovementComponent _movementComponent;
+    private KnockbackComponent _knockbackComponent;
     private EnemyAnimatorComponent _enemyAnimatorComponent;
 
     private void Awake()
     {
         _healthComponent = GetComponent<HealthComponent>();
-        _movementComponent = GetComponent<MovementComponent>();
+        _knockbackComponent = GetComponent<KnockbackComponent>();
         _enemyAnimatorComponent = GetComponent<EnemyAnimatorComponent>();
     }
 
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     public void Knockback()
     {
-        _movementComponent.Knockback();
+        _knockbackComponent.Knockback();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

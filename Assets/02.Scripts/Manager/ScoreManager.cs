@@ -38,13 +38,9 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.S))
         {
+            _userData.BestScore = 0;
             SaveData(_userData);
-            Debug.Log($"저장 : {_userData.BestScore}");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _userData = LoadData();
-            Debug.Log($"로드 : {_userData.BestScore}");
+            Debug.Log($"최고 점수 초기화");
         }
 #endif
 

@@ -18,7 +18,4 @@ public abstract class MovementComponent : MonoBehaviour
     }
 
     protected abstract void Move();
-
-    public virtual void Knockback() { }
-
 }
