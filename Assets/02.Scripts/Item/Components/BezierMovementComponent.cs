@@ -20,12 +20,16 @@ public class BezierMovementComponent : MovementComponent
     private float _deltaTime;
     private float _curTime;
 
-    private void Start()
+    private void Awake()
     {
-        _timer = -_invokeTime;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
         _playerTransform = player.transform;
+    }
+
+    protected override void Init()
+    {
+        _timer = -_invokeTime;
 
         // 시작 지점과 끝 지점 저장
         _startPoint = transform.position;

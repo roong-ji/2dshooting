@@ -9,8 +9,9 @@ public class BulletMove : MovementComponent
     private Quaternion _originRotation;
     private Quaternion _flipedRotation;
 
-    private void Start()
+    protected override void Init()
     {
+        _timer = 0f;
         _originRotation = transform.rotation;
         _flipedRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z * -1f);
     }

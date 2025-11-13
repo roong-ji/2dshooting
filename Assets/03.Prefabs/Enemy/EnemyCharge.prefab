@@ -271,7 +271,7 @@ MonoBehaviour:
   - {fileID: 6341783732567875944}
   _fireRotation: []
   _fireSpeed: 0.6
-  _bulletTypes: 02000000
+  _bulletType: 2
 --- !u!95 &6028738445654575739
 Animator:
   serializedVersion: 7

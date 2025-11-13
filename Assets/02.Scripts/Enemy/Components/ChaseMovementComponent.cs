@@ -5,7 +5,7 @@ public class ChaseMovementComponent : KnockbackComponent
     private Transform _playerTransform;
     private Vector2 _directionToPlayer;
 
-    private void Start()
+    private void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;

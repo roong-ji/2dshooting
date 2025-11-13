@@ -12,9 +12,6 @@ public abstract class FireComponent : MonoBehaviour
     [Tooltip("1초당 공격 횟수")]
     [SerializeField] protected float _fireSpeed;
 
-    [Header("총알 종류")]
-    [SerializeField] protected EBulletType[] _bulletTypes;
-
     private void Update()
     {
         _timer += Time.deltaTime;

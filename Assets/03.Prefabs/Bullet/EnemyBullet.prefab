@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3548023898997053057}
   - component: {fileID: 8304930981546638990}
   - component: {fileID: 3437288910607554959}
-  - component: {fileID: 2477587245605061401}
   - component: {fileID: 7006429113796811215}
+  - component: {fileID: 8403927637336849216}
   m_Layer: 8
   m_Name: EnemyBullet
   m_TagString: Enemy
@@ -154,21 +154,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.2
---- !u!114 &2477587245605061401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8394241573982857948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177358b2de3247b499f0693087e606d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 2
-  _criticalRate: 0
-  _bulletType: 2
 --- !u!114 &7006429113796811215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +170,17 @@ MonoBehaviour:
   _speed: 5
   _direction: {x: 0, y: -1}
   _knockbackDuration: 0
+--- !u!114 &8403927637336849216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394241573982857948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fc1e176aa0633409098610ba6d1a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2
+  _criticalRate: 0

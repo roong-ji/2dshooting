@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8226646957888953229}
   - component: {fileID: 3273665106102168384}
-  - component: {fileID: -6415844107811406956}
   - component: {fileID: 6131587114738251616}
   - component: {fileID: 2582908767233426369}
   - component: {fileID: 2107702018056157658}
+  - component: {fileID: 3997760634008794965}
   m_Layer: 0
   m_Name: PetBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,21 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6415844107811406956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926989067271884153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177358b2de3247b499f0693087e606d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 10
-  _criticalRate: 0
-  _bulletType: 3
 --- !u!50 &6131587114738251616
 Rigidbody2D:
   serializedVersion: 5
@@ -186,3 +171,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.16666667, y: 0.5}
   m_Direction: 0
+--- !u!114 &3997760634008794965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926989067271884153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9778d96ee6037534dae368fa4fea144f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _criticalRate: 0

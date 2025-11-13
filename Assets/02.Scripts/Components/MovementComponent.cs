@@ -12,10 +12,17 @@ public abstract class MovementComponent : MonoBehaviour
     [Header("이동 방향")]
     [SerializeField] protected Vector2 _direction;
 
+    private void OnEnable()
+    {
+        Init();
+    }
+
     private void FixedUpdate()
     {
         Move();
     }
 
     protected abstract void Move();
+
+    protected abstract void Init();
 }

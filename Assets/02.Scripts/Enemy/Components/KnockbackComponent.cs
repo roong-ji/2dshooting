@@ -4,17 +4,20 @@ public abstract class KnockbackComponent : MovementComponent
 {
     [Header("넉백 시간")]
     [SerializeField] private float _knockbackDuration;
-    private bool _isKnockback = false;
-    float _timer = 0f;
+    private bool _isKnockback;
+    private float _timer;
 
     private float _originSpeed;
     private Vector2 _originDirection;
 
-    private void Awake()
+    protected override void Init()
     {
+        _isKnockback = false;
+        _timer = 0f;
         _originSpeed = _speed;
         _originDirection = _direction;
     }
+
 
     protected void KnockbackMove()
     {
@@ -32,7 +35,7 @@ public abstract class KnockbackComponent : MovementComponent
         _speed = Mathf.Lerp(_speed, _originSpeed, _timer / _knockbackDuration);
     }
 
-    public  void Knockback()
+    public void Knockback()
     {
         _timer = 0f;
         _isKnockback = true;

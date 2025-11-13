@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4024585309936715600}
   - component: {fileID: 1071374221220725440}
-  - component: {fileID: 7168327065151351364}
   - component: {fileID: -5076665077999212980}
   - component: {fileID: 8989620595762632791}
   - component: {fileID: 6600636950765815445}
   - component: {fileID: 1596300263905962308}
+  - component: {fileID: 3579744894596054834}
   m_Layer: 7
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,21 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7168327065151351364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204227422169047206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177358b2de3247b499f0693087e606d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 60
-  _criticalRate: 0.5
-  _bulletType: 0
 --- !u!114 &-5076665077999212980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,3 +269,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3579744894596054834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204227422169047206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9778d96ee6037534dae368fa4fea144f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 60
+  _criticalRate: 0.5

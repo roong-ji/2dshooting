@@ -4,6 +4,9 @@ using UnityEngine.UIElements;
 public class PlayerFireComponent : FireComponent
 {
     private bool _fireRequested = false;
+
+    [Header("총알 종류")]
+    [SerializeField] EBulletType[] _bulletType;
     private int _bulletIndex = 0;
 
     // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함
@@ -17,11 +20,11 @@ public class PlayerFireComponent : FireComponent
         if (1f / _fireSpeed > _timer) return;
 
         // 총알 발사
-        BulletFactory.Instance.MakeBullet(_bulletTypes[_bulletIndex], _firePosition[0].position, _fireRotation[0]);
-        BulletFactory.Instance.MakeBullet(_bulletTypes[_bulletIndex], _firePosition[1].position, _fireRotation[1]);
+        BulletFactory.Instance.MakeBullet((EBulletType)_bulletIndex, _firePosition[0].position, _fireRotation[0]);
+        BulletFactory.Instance.MakeBullet((EBulletType)_bulletIndex, _firePosition[1].position, _fireRotation[1]);
 
         // 다음 총알 장전
-        _bulletIndex = ++_bulletIndex % _bulletTypes.Length;
+        _bulletIndex = ++_bulletIndex % _bulletType.Length;
         _timer = 0f;
     }
 
