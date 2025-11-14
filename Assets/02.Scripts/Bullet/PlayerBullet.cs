@@ -17,7 +17,8 @@ public class PlayerBullet : Bullet
         hitbox.TakeDamage(damage);
 
         bool critical = Random.value < _criticalRate;
-        if (critical) hitbox.Knockback(); return true;
+        if (critical) hitbox.Knockback(); 
+        return true;
     }
 
 }
