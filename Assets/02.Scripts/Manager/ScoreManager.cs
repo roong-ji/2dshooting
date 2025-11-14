@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     private int _bestScore = 0;
     private int _currentScore = 0;
+    private int _totalScore = 0;
     
     private float _textScore = 0;
     private float _textBestScore = 0;
@@ -40,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     private const string CURRENT = "현재";
     private const string BEST = "최고";
 
-    public int Score => _currentScore;
+    public int Score => _totalScore;
 
     private void Start()
     {
@@ -55,9 +56,12 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.S))
         {
+            _bestScore = 0;
+            _currentScore = 0;
+            _totalScore = 0;
             _userData.BestScore = 0;
             SaveData(_userData);
-            Debug.Log($"최고 점수 초기화");
+            Debug.Log($"점수 초기화");
         }
 #endif
 
@@ -86,6 +90,7 @@ public class ScoreManager : MonoBehaviour
     {
         _timer = 0f;
         _currentScore += score;
+        _totalScore += score;
         _currentScoreTextUI.rectTransform.localScale = _originScale * MAX_SACLE;
 
         //_currentScoreTextUI.rectTransform.DOScale(_originScale, _lerpTime);

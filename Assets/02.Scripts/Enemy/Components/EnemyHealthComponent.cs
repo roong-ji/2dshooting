@@ -6,6 +6,15 @@ public class EnemyHealthComponent : HealthComponent
 
     [Header("점수")]
     [SerializeField] private int _score;
+    [SerializeField] private float _roundScore;
+
+    protected override void InitHealth()
+    {
+        // 누적 점수에 따라 몬스터의 체력이 높아진다.
+        float round = 1;
+        round += ScoreManager.Instance.Score / _roundScore;
+        _health = _maxHealth * round;
+    }
 
     public override void TakeDamage(float damage)
     {

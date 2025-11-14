@@ -44,7 +44,7 @@ public class HealthComponent : MonoBehaviour
         _health += amount;
     }
 
-    private void InitHealth()
+    protected virtual void InitHealth()
     {
         _health = _maxHealth;
     }
