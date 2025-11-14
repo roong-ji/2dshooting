@@ -8,6 +8,8 @@ public enum EBulletType
     PlayerSmallBullet = 1,
     EnemyBullet = 2,
     PetBullet = 3,
+    BossBullet = 4,
+    BossSqiralBullet = 5,
 }
 
 [Serializable]
@@ -83,6 +85,30 @@ public class BulletFactory : MonoBehaviour
 
         bullet.transform.position = position;
         bullet.transform.rotation = quaternion;
+        bullet.SetActive(true);
+
+        index = ++index % size;
+
+        return bullet;
+    }
+
+    public GameObject MakeBullet(EBulletType bulletType, Transform transform)
+    {
+        ref int index = ref _bullets[(int)bulletType].Index;
+        int size = _bullets[(int)bulletType].PoolSize;
+
+        GameObject bullet = _bulletPools[bulletType][index];
+
+        // 가장 오래된 총알이 아직 사용 중이면 풀을 확장한다.
+        if (bullet.activeSelf == true)
+        {
+            index = size;
+            ExpandPool(bulletType);
+            size *= 2;
+        }
+
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
         bullet.SetActive(true);
 
         index = ++index % size;
