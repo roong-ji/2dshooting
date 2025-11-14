@@ -21,7 +21,7 @@ public class BoomComponent : MonoBehaviour
 
         EnemyHealthComponent enemy = collision.GetComponent<EnemyHealthComponent>();
 
-        if (enemy == null) Destroy(collision.gameObject);
+        if (enemy == null) collision.gameObject.SetActive(false);
         else enemy.Death();
     }
 }

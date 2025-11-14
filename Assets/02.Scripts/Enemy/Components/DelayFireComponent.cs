@@ -3,10 +3,11 @@ using UnityEngine;
 public class DelayFireComponent : MonoBehaviour
 {
     [SerializeField] private GameObject _fire;
+    [SerializeField] private float _delayTime;
 
     private void OnEnable()
     {
-        _fire.SetActive(false);
+        Invoke(nameof(StartFire), _delayTime);
     }
 
     public void StartFire()

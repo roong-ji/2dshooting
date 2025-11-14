@@ -5,13 +5,7 @@ public class BossMovementComponent : MovementComponent
     [Header("최종 위치")]
     [SerializeField] private Vector2 _finalPosition;
 
-    private DelayFireComponent _delayFire;
     private bool _endMove;
-
-    private void Awake()
-    {
-        _delayFire = GetComponent<DelayFireComponent>();
-    }
 
     protected override void Init() 
     {
@@ -28,7 +22,6 @@ public class BossMovementComponent : MovementComponent
 
         if (_direction == Vector2.zero)
         {
-            _delayFire.StartFire();
             _endMove = true;
         }
     }

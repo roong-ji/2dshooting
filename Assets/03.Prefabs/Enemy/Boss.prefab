@@ -642,6 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fire: {fileID: 4367932345454030051}
+  _delayTime: 2
 --- !u!1 &5587578595548848095
 GameObject:
   m_ObjectHideFlags: 0
