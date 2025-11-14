@@ -40,6 +40,8 @@ public class ScoreManager : MonoBehaviour
     private const string CURRENT = "현재";
     private const string BEST = "최고";
 
+    public int Score => _currentScore;
+
     private void Start()
     {
         _userData = LoadData();

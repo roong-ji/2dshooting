@@ -20,7 +20,6 @@ public abstract class KnockbackComponent : MovementComponent
         _direction = _originDirection;
     }
 
-
     protected void KnockbackMove()
     {
         if (_isKnockback == false) return;

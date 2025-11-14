@@ -38,6 +38,10 @@ public class EnemyFactory : MonoBehaviour
 
     [Header("몬스터 프리팹")]
     [SerializeField] private EnemyData[] _enemies;
+    [SerializeField] private GameObject _bossPrefab;
+    private GameObject _bossInstance;
+
+    public bool BossSpawned => _bossInstance !=null && _bossInstance.activeSelf;
 
     private Dictionary<EEnemyType, List<GameObject>> _enemyPools;
 
@@ -65,7 +69,20 @@ public class EnemyFactory : MonoBehaviour
         }
     }
 
-    public GameObject MakeEnemy(EEnemyType enemyType, Vector3 position, Quaternion quaternion)
+    public GameObject MakeBossEnemy(Vector3 position)
+    {
+        if(_bossInstance == null)
+        {
+            _bossInstance = Instantiate(_bossPrefab, transform);
+        }
+
+        _bossInstance.transform.position = position;
+        _bossInstance.SetActive(true);
+
+        return _bossInstance;
+    }
+
+    public GameObject MakeEnemy(EEnemyType enemyType, Vector3 position)
     {
         ref int index = ref _enemies[(int)enemyType].Index;
         int size = _enemies[(int)enemyType].PoolSize;
@@ -80,7 +97,6 @@ public class EnemyFactory : MonoBehaviour
         }
 
         enemy.transform.position = position;
-        enemy.transform.rotation = quaternion;
         enemy.SetActive(true);
 
         index = ++index % size;
@@ -99,5 +115,16 @@ public class EnemyFactory : MonoBehaviour
             newBullet.SetActive(false);
         }
         enemy.PoolSize *= 2;
+    }
+
+    public void ReturnAllEnemy()
+    {
+        foreach (var enemyPool in _enemyPools)
+        {
+            foreach (var enemy in enemyPool.Value)
+            {
+                enemy.SetActive(false);
+            }
+        }
     }
 }

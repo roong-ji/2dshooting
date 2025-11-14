@@ -14,22 +14,32 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _minSpawnInterval;
     [SerializeField] private float _maxSpawnInterval;
 
+    [Header("보스 스폰 점수")]
+    [SerializeField] private int _bossScore;
+    private int _nextBossScore;
+
     Vector2 spawnPosition;
     private float _timer = 0f;
 
     private void Awake()
     {
         spawnPosition = transform.position;
+        _nextBossScore = _bossScore;
     }
 
     private void Update()
     {
+        if (EnemyFactory.Instance.BossSpawned == true) return;
+
         _timer+= Time.deltaTime;
         if(_timer >= _spawnInterval)
         {
             SpawnEnemy();
             _timer = 0f;
         }
+
+        if (ScoreManager.Instance.Score < _nextBossScore) return;
+        SpawnBoss();
     }
 
     private void SpawnEnemy()
@@ -39,8 +49,17 @@ public class EnemySpawner : MonoBehaviour
 
         spawnPosition.x = Random.Range(_minSpawnX, _maxSpawnX);
 
-        EnemyFactory.Instance.MakeEnemy(enemyType, spawnPosition, Quaternion.identity);
+        EnemyFactory.Instance.MakeEnemy(enemyType, spawnPosition);
 
         _spawnInterval = Random.Range(_minSpawnInterval, _maxSpawnInterval);
+    }
+
+    private void SpawnBoss()
+    {
+        spawnPosition.x = 0f;
+        EnemyFactory.Instance.ReturnAllEnemy();
+        EnemyFactory.Instance.MakeBossEnemy(spawnPosition);
+
+        _nextBossScore += _bossScore;
     }
 }
