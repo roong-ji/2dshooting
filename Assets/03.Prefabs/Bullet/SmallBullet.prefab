@@ -283,3 +283,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 40
   _criticalRate: 0.3
+  _damageRate: 0.4
