@@ -9,9 +9,6 @@ public class PlayerFireComponent : FireComponent
     [SerializeField] EBulletType[] _bulletType;
     private int _bulletIndex = 0;
 
-    [Header("공격력")]
-    [SerializeField] float _damage;
-
     // 1초에 n 번 공격하려면 1/n초에 한번 공격해야함
     protected override void Fire()
     {

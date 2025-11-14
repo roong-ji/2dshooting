@@ -68,30 +68,6 @@ public class BulletFactory : MonoBehaviour
         }
     }
 
-    public GameObject MakeBullet(EBulletType bulletType, Vector3 position, float damage)
-    {
-        ref int index = ref _bullets[(int)bulletType].Index;
-        int size = _bullets[(int)bulletType].PoolSize;
-
-        GameObject bullet = _bulletPools[bulletType][index];
-
-        // 가장 오래된 총알이 아직 사용 중이면 풀을 확장한다.
-        if (bullet.activeSelf == true)
-        {
-            ExpandPool(bulletType);
-            index = size;
-            size *= 2;
-            bullet = _bulletPools[bulletType][index];
-        }
-
-        bullet.transform.position = position;
-        bullet.SetActive(true);
-
-        index = ++index % size;
-
-        return bullet;
-    }
-
     public GameObject MakeBullet(EBulletType bulletType, Transform transform)
     {
         ref int index = ref _bullets[(int)bulletType].Index;

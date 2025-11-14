@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
+    [SerializeField] private float _criticalRate;
+
     protected override bool ShouldHit(GameObject target)
     {
         if (target.CompareTag("Enemy") == false) return false;

@@ -48,5 +48,4 @@ public class HealthComponent : MonoBehaviour
     {
         _health = _maxHealth;
     }
-
 }
