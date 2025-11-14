@@ -9,15 +9,16 @@ public class PlayerBullet : Bullet
         HitboxComponent hitbox = target.GetComponent<HitboxComponent>();
         if (hitbox == null)
         {
-            Destroy(target);
+            target.SetActive(false);
             return true;
         }
 
-        _damage *= hitbox.DamageRate;
-        hitbox.TakeDamage(_damage);
+        float damage = _damage * hitbox.DamageRate;
+        hitbox.TakeDamage(damage);
 
         bool critical = Random.value < _criticalRate;
-        if (critical) hitbox.Knockback(); return true;
+        if (critical) hitbox.Knockback(); 
+        return true;
     }
 
 }

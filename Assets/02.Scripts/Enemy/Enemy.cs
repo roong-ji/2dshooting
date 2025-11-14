@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         // if (collision.gameObject.name == "Player") 오타에 취약!!
         if (collision.gameObject.CompareTag("Player") == false) return; // 코드를 간결하게 만드는 조기 리턴
         collision.gameObject.GetComponent<HealthComponent>().TakeDamage(1f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

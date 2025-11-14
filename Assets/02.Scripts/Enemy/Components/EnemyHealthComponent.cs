@@ -35,7 +35,7 @@ public class EnemyHealthComponent : HealthComponent
         DropItem();
         AddScore();
         PlayDeathSound();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

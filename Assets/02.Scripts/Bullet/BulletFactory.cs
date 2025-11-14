@@ -78,6 +78,7 @@ public class BulletFactory : MonoBehaviour
         {
             index = size;
             ExpandPool(bulletType);
+            size *= 2;
         }
 
         bullet.transform.position = position;
