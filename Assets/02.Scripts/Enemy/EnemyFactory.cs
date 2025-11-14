@@ -37,7 +37,7 @@ public class EnemyFactory : MonoBehaviour
     }
 
     [Header("몬스터 프리팹")]
-    [SerializeField] private EnemyData[] _enemyes;
+    [SerializeField] private EnemyData[] _enemies;
 
     private Dictionary<EEnemyType, List<GameObject>> _enemyPools;
 
@@ -50,7 +50,7 @@ public class EnemyFactory : MonoBehaviour
     {
         _enemyPools = new Dictionary<EEnemyType, List<GameObject>>();
 
-        foreach (var enemy in _enemyes)
+        foreach (var enemy in _enemies)
         {
             List<GameObject> pool = new List<GameObject>(enemy.PoolSize);
 
@@ -67,11 +67,18 @@ public class EnemyFactory : MonoBehaviour
 
     public GameObject MakeEnemy(EEnemyType enemyType, Vector3 position, Quaternion quaternion)
     {
-        ref int index = ref _enemyes[(int)enemyType].Index;
-        int size = _enemyes[(int)enemyType].PoolSize;
+        ref int index = ref _enemies[(int)enemyType].Index;
+        int size = _enemies[(int)enemyType].PoolSize;
 
         GameObject enemy = _enemyPools[enemyType][index];
-        
+
+        if (enemy.activeSelf == true)
+        {
+            index = size;
+            ExpandPool(enemyType);
+            size *= 2;
+        }
+
         enemy.transform.position = position;
         enemy.transform.rotation = quaternion;
         enemy.SetActive(true);
@@ -79,5 +86,18 @@ public class EnemyFactory : MonoBehaviour
         index = ++index % size;
 
         return enemy;
+    }
+
+    private void ExpandPool(EEnemyType enemyType)
+    {
+        ref EnemyData enemy = ref _enemies[(int)enemyType];
+
+        for (int i = 0; i < enemy.PoolSize; ++i)
+        {
+            GameObject newBullet = Instantiate(enemy.Prefab, transform);
+            _enemyPools[enemyType].Add(newBullet);
+            newBullet.SetActive(false);
+        }
+        enemy.PoolSize *= 2;
     }
 }

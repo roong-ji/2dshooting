@@ -13,8 +13,8 @@ public class PlayerBullet : Bullet
             return true;
         }
 
-        _damage *= hitbox.DamageRate;
-        hitbox.TakeDamage(_damage);
+        float damage = _damage * hitbox.DamageRate;
+        hitbox.TakeDamage(damage);
 
         bool critical = Random.value < _criticalRate;
         if (critical) hitbox.Knockback(); return true;
