@@ -3,14 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(HealthComponent), typeof(MovementComponent), typeof(FireComponent))]
 public class Player : MonoBehaviour
 {
-    private HealthComponent _healthComponent;
-    private PlayerMovementComponent _playerMovementComponent;
+    private PlayerHealthComponent _healthComponent;
+    private PlayerMovementComponent _movementComponent;
     private FireComponent _fireComponent;
 
     private void Awake()
     {
-        _healthComponent = GetComponent<HealthComponent>();
-        _playerMovementComponent = GetComponent<PlayerMovementComponent>();
+        _healthComponent = GetComponent<PlayerHealthComponent>();
+        _movementComponent = GetComponent<PlayerMovementComponent>();
         _fireComponent = GetComponent<FireComponent>();
     }
 
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     public void MoveSpeedup(float amount)
     {
-        _playerMovementComponent.MoveSpeedup(amount);
+        _movementComponent.MoveSpeedup(amount);
     }
 
     public void FireSpeedup(float amount)

@@ -39,7 +39,7 @@ public class EnemyHealthComponent : HealthComponent
         SoundManager.Instance.PlayDeathSound();
     }
 
-    public void Death()
+    public override void Death()
     {
         DropItem();
         AddScore();

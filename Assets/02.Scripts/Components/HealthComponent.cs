@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthComponent : MonoBehaviour
+public abstract class HealthComponent : MonoBehaviour
 {
     [Header("체력")]
     [SerializeField] protected float _health;
@@ -17,35 +17,18 @@ public class HealthComponent : MonoBehaviour
     {
         InitHealth();
     }
+    protected abstract void InitHealth();
 
-    public virtual void TakeDamage(float damage)
-    {
-        _health -= damage;
+    public abstract void TakeDamage(float damage);
 
-        if (_health > 0f) return;
-        MakeExplosionEffect();
-        PlayDeathSound();
-        gameObject.SetActive(false);
-        
-    }
+    public abstract void Death();
+
+    protected abstract void PlayDeathSound();
 
     protected void MakeExplosionEffect()
     {
         if(_particleComponent ==null) return;
         _particleComponent.PlayParticleEffect();
     }
-    protected virtual void PlayDeathSound()
-    {
-        SoundManager.Instance.PlayGameOverSound();
-    }
 
-    public void Heal(float amount)
-    {
-        _health += amount;
-    }
-
-    protected virtual void InitHealth()
-    {
-        _health = _maxHealth;
-    }
 }
