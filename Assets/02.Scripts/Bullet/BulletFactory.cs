@@ -73,9 +73,10 @@ public class BulletFactory : MonoBehaviour
 
         GameObject bullet = _bulletPools[bulletType][index];
 
-        // 가장 오래된 총알이 아직 사용 중이면
+        // 가장 오래된 총알이 아직 사용 중이면 풀을 확장한다.
         if (bullet.activeSelf == true)
         {
+            index = size;
             ExpandPool(bulletType);
         }
 
