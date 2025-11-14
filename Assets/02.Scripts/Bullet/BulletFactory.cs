@@ -72,6 +72,13 @@ public class BulletFactory : MonoBehaviour
         int size = _bullets[(int)bulletType].PoolSize;
 
         GameObject bullet = _bulletPools[bulletType][index];
+
+        // 가장 오래된 총알이 아직 사용 중이면
+        if (bullet.activeSelf == true)
+        {
+            ExpandPool(bulletType);
+        }
+
         bullet.transform.position = position;
         bullet.transform.rotation = quaternion;
         bullet.SetActive(true);
@@ -79,6 +86,19 @@ public class BulletFactory : MonoBehaviour
         index = ++index % size;
 
         return bullet;
+    }
+
+    private void ExpandPool(EBulletType bulletType)
+    {
+        ref BulletData bullet = ref _bullets[(int)bulletType];
+
+        for (int i = 0; i < bullet.PoolSize; ++i)
+        {
+            GameObject newBullet = Instantiate(bullet.Prefab, transform);
+            _bulletPools[bulletType].Add(newBullet);
+            newBullet.SetActive(false);
+        }
+        bullet.PoolSize *= 2;
     }
 
 }

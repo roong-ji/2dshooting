@@ -71,6 +71,7 @@ public class EnemyFactory : MonoBehaviour
         int size = _enemyes[(int)enemyType].PoolSize;
 
         GameObject enemy = _enemyPools[enemyType][index];
+        
         enemy.transform.position = position;
         enemy.transform.rotation = quaternion;
         enemy.SetActive(true);
