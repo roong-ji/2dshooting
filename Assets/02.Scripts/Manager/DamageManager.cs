@@ -23,8 +23,12 @@ public class DamageManager : MonoBehaviour
     [SerializeField] private float _damageIncrease;
     public float Damage => _damage;
 
+    private int _socreCost;
+
     public void PowerUp()
     {
+        if (ScoreManager.Instance.CurrentScore < _socreCost) return;
+        ScoreManager.Instance.PayScore(_socreCost);
         _damage += _damageIncrease;
     }
 

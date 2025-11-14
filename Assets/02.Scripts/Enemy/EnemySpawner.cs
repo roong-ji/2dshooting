@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             _timer = 0f;
         }
 
-        if (ScoreManager.Instance.Score < _nextBossScore) return;
+        if (ScoreManager.Instance.TotalScore < _nextBossScore) return;
         SpawnBoss();
     }
 

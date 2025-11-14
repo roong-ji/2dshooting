@@ -41,7 +41,8 @@ public class ScoreManager : MonoBehaviour
     private const string CURRENT = "현재";
     private const string BEST = "최고";
 
-    public int Score => _totalScore;
+    public int TotalScore => _totalScore;
+    public int CurrentScore => _currentScore;
 
     private void Start()
     {
@@ -101,6 +102,11 @@ public class ScoreManager : MonoBehaviour
 
         _userData.BestScore = _bestScore;
         SaveData(_userData);
+    }
+
+    public void PayScore(int cost)
+    {
+        _currentScore -= cost;
     }
 
     private void SaveData(UserData data)

@@ -12,7 +12,7 @@ public class EnemyHealthComponent : HealthComponent
     {
         // 누적 점수에 따라 몬스터의 체력이 높아진다.
         float round = 1;
-        round += ScoreManager.Instance.Score / _roundScore;
+        round += ScoreManager.Instance.TotalScore / _roundScore;
         _health = _maxHealth * round;
     }
 
