@@ -10,7 +10,7 @@ public class PlayerMovementComponent : MovementComponent
 
     private Vector2 _originPosition;
 
-    private void Start()
+    protected override void Init()
     {
         _originPosition = transform.position;
     }

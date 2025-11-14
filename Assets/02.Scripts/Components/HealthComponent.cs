@@ -4,12 +4,18 @@ public class HealthComponent : MonoBehaviour
 {
     [Header("체력")]
     [SerializeField] protected float _health;
+    [SerializeField] protected float _maxHealth;
 
     private ParticleComponent _particleComponent;
 
     private void Awake()
     {
         _particleComponent = GetComponent<ParticleComponent>();
+    }
+
+    private void OnEnable()
+    {
+        InitHealth();
     }
 
     public virtual void TakeDamage(float damage)
@@ -36,6 +42,11 @@ public class HealthComponent : MonoBehaviour
     public void Heal(float amount)
     {
         _health += amount;
+    }
+
+    private void InitHealth()
+    {
+        _health = _maxHealth;
     }
 
 }

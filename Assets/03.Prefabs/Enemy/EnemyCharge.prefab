@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _maxHealth: 100
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _score: 100
 --- !u!114 &-1666855622657628985
@@ -253,6 +254,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 5350554743939198428}
   _speed: 2.5
   _direction: {x: 0, y: -1}
+  _knockbackDuration: 0
 --- !u!114 &6796750620361937626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,13 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213b96845f966b43adc6672ce9404ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab:
-  - {fileID: 8394241573982857948, guid: 4b4df071b53079b4faac3bb4c4e1fd06, type: 3}
-  _firePositionLeft: {fileID: 4841507379498257535}
-  _firePositionRight: {fileID: 6341783732567875944}
-  _leftRotation: {x: 0, y: 0, z: 0, w: 0}
-  _rightRotation: {x: 0, y: 0, z: 0, w: 0}
-  _fireSpeed: 1
+  _firePosition:
+  - {fileID: 4841507379498257535}
+  - {fileID: 6341783732567875944}
+  _fireRotation: []
+  _fireSpeed: 0.6
+  _bulletType: 2
 --- !u!95 &6028738445654575739
 Animator:
   serializedVersion: 7
