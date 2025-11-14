@@ -8,7 +8,7 @@ public class PetFireComponent : FireComponent
     protected override void Fire()
     {
         if (_timer < 1f / _fireSpeed) return;
-        BulletFactory.Instance.MakeBullet(_bulletType, transform.position, Quaternion.identity);
+        BulletFactory.Instance.MakeBullet(_bulletType, transform);
         _timer = 0f;
     }
 }

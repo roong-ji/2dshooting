@@ -7,6 +7,11 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] protected float _damage;
     [SerializeField] protected float _criticalRate;
 
+    private void OnEnable()
+    {
+        
+    }
+
     protected abstract bool ShouldHit(GameObject target);
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,5 +19,4 @@ public abstract class Bullet : MonoBehaviour
         if (ShouldHit(collision.gameObject) == false) return;
         gameObject.SetActive(false);
     }
-
 }

@@ -9,8 +9,12 @@ public class PlayerInput : MonoBehaviour
 
     private Animator _animator;
 
+    [Header("조이 스틱")]
+    [SerializeField] private Joystick _joystick;
+
     private Camera _mainCamera;
 
+    [Header("가동 범위")]
     [SerializeField] private float _maxX;
     [SerializeField] private float _minX;
     [SerializeField] private float _maxY;
@@ -77,8 +81,11 @@ public class PlayerInput : MonoBehaviour
         // 수동 입력 감지
         else
         {
-            direction.x = Input.GetAxisRaw("Horizontal");
-            direction.y = Input.GetAxisRaw("Vertical");
+            //direction.x = Input.GetAxisRaw("Horizontal");
+            //direction.y = Input.GetAxisRaw("Vertical");
+
+            direction.x = _joystick.Horizontal;
+            direction.y = _joystick.Vertical;
 
             _playerMovementComponent.SetMoveDirection(direction.normalized);
 

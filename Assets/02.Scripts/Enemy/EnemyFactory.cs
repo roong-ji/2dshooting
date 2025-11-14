@@ -91,9 +91,10 @@ public class EnemyFactory : MonoBehaviour
 
         if (enemy.activeSelf == true)
         {
-            index = size;
             ExpandPool(enemyType);
+            index = size;
             size *= 2;
+            enemy = _enemyPools[enemyType][index];
         }
 
         enemy.transform.position = position;
