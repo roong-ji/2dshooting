@@ -4,18 +4,20 @@ public abstract class KnockbackComponent : MovementComponent
 {
     [Header("넉백 시간")]
     [SerializeField] private float _knockbackDuration;
+    [SerializeField] private float _knockbackForce;
     private bool _isKnockback;
     private float _timer;
 
-    private float _originSpeed;
-    private Vector2 _originDirection;
+    [Header("초기값 설정")]
+    [SerializeField] private float _originSpeed;
+    [SerializeField] private Vector2 _originDirection;
 
     protected override void Init()
     {
         _isKnockback = false;
         _timer = 0f;
-        _originSpeed = _speed;
-        _originDirection = _direction;
+        _speed = _originSpeed;
+        _direction = _originDirection;
     }
 
 
@@ -39,6 +41,6 @@ public abstract class KnockbackComponent : MovementComponent
     {
         _timer = 0f;
         _isKnockback = true;
-        _speed = -_originSpeed;
+        _speed = _originSpeed * _knockbackForce;
     }
 }

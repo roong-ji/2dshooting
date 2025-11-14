@@ -9,7 +9,7 @@ public class PlayerBullet : Bullet
         HitboxComponent hitbox = target.GetComponent<HitboxComponent>();
         if (hitbox == null)
         {
-            Destroy(target);
+            target.SetActive(false);
             return true;
         }
 

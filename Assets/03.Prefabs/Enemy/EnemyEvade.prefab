@@ -187,6 +187,9 @@ MonoBehaviour:
   _speed: 3
   _direction: {x: 0, y: -1}
   _knockbackDuration: 0.25
+  _knockbackForce: -1
+  _originSpeed: 3
+  _originDirection: {x: 0, y: -1}
   _playerBulletLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -25,7 +25,7 @@ public class HealthComponent : MonoBehaviour
         if (_health > 0f) return;
         MakeExplosionEffect();
         PlayDeathSound();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         
     }
 
