@@ -23,9 +23,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text _bestScoreTextUI;
     [SerializeField] private Text _currentScoreTextUI;
 
-    private UserData _userData;
-    private const string DATA_KEY = "PlayerData";
-
     private int _bestScore = 0;
     private int _currentScore = 0;
     private int _totalScore = 0;
@@ -44,10 +41,9 @@ public class ScoreManager : MonoBehaviour
     public int TotalScore => _totalScore;
     public int CurrentScore => _currentScore;
 
-    private void Start()
+    public void InitScore(float bestScore)
     {
-        _userData = LoadData();
-        _bestScore = _userData.BestScore;
+        _bestScore = bestScore;
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
     }
@@ -67,7 +63,7 @@ public class ScoreManager : MonoBehaviour
 #endif
 
         _timer += Time.deltaTime;
-
+        34
         if (_timer > LERP_TIME) return;
         LerpScore(_currentScoreTextUI, ref _textScore, CURRENT);
 
@@ -99,29 +95,10 @@ public class ScoreManager : MonoBehaviour
         if (_bestScore > _currentScore) return;
         _bestScoreTextUI.rectTransform.localScale = _originScale * MAX_SACLE;
         _bestScore = _currentScore;
-
-        _userData.BestScore = _bestScore;
-        SaveData(_userData);
     }
 
     public void PayScore(int cost)
     {
         _currentScore -= cost;
-    }
-
-    private void SaveData(UserData data)
-    {
-        string jsonData = JsonUtility.ToJson(data);
-
-        PlayerPrefs.SetString(DATA_KEY, jsonData);
-        PlayerPrefs.Save();
-    }
-
-    private UserData LoadData()
-    {
-        if (PlayerPrefs.HasKey(DATA_KEY) == false) return new UserData();
-
-        string jsonData = PlayerPrefs.GetString(DATA_KEY);
-        return JsonUtility.FromJson<UserData>(jsonData);
     }
 }

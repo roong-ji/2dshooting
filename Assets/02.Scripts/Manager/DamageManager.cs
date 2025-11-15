@@ -25,6 +25,11 @@ public class DamageManager : MonoBehaviour
 
     private int _socreCost;
 
+    public void InitDamage(float damage)
+    {
+        _damage = damage;
+    }
+
     public void PowerUp()
     {
         if (ScoreManager.Instance.CurrentScore < _socreCost) return;

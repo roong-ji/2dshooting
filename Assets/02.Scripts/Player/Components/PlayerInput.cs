@@ -51,21 +51,6 @@ public class PlayerInput : MonoBehaviour
 
     private void GetInput()
     {
-        // 자동 모드
-        if (Input.GetKeyDown(KeyCode.Alpha1) || 
-            Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            _autoMode = true;
-            _playerAutoMove.StartDetect(true);
-        }
-        // 조작 모드
-        if (Input.GetKeyDown(KeyCode.Alpha2) || 
-            Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            _autoMode = false;
-            _playerAutoMove.StartDetect(false);
-        }
-
         Vector2 direction;
 
         // 자동 전투
@@ -89,6 +74,12 @@ public class PlayerInput : MonoBehaviour
         // 애니메이션
         _animator.SetInteger("x", Mathf.RoundToInt(direction.x));
 
+    }
+
+    public void ToggleAutoMode()
+    {
+        _autoMode = !_autoMode;
+        _playerAutoMove.StartDetect(_autoMode);
     }
 
     private void Inside()
