@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     public int TotalScore => _totalScore;
     public int CurrentScore => _currentScore;
 
-    public void InitScore(float bestScore)
+    public void InitScore(int bestScore)
     {
         _bestScore = bestScore;
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
@@ -56,14 +56,12 @@ public class ScoreManager : MonoBehaviour
             _bestScore = 0;
             _currentScore = 0;
             _totalScore = 0;
-            _userData.BestScore = 0;
-            SaveData(_userData);
             Debug.Log($"점수 초기화");
         }
 #endif
 
         _timer += Time.deltaTime;
-        34
+
         if (_timer > LERP_TIME) return;
         LerpScore(_currentScoreTextUI, ref _textScore, CURRENT);
 

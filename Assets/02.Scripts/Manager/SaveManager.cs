@@ -8,7 +8,7 @@ public class AutoSavor : MonoBehaviour
     private void Start()
     {
         _userData = LoadData();
-        ScoreManager.Instance.InitScored(_userData.BestScore);
+        ScoreManager.Instance.InitScore(_userData.BestScore);
         DamageManager.Instance.InitDamage(_userData.Damage);
     }
 

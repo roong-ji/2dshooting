@@ -5,7 +5,7 @@ using UnityEngine;
 public class UserData
 {
     public int BestScore;
-    public int Damage;
+    public float Damage;
 
     public UserData()
     {
