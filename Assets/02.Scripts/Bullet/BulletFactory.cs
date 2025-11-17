@@ -8,6 +8,8 @@ public enum EBulletType
     PlayerSmallBullet = 1,
     EnemyBullet = 2,
     PetBullet = 3,
+    BossBullet = 4,
+    BossSqiralBullet = 5,
 }
 
 [Serializable]
@@ -66,7 +68,7 @@ public class BulletFactory : MonoBehaviour
         }
     }
 
-    public GameObject MakeBullet(EBulletType bulletType, Vector3 position, Quaternion quaternion)
+    public GameObject MakeBullet(EBulletType bulletType, Transform transform)
     {
         ref int index = ref _bullets[(int)bulletType].Index;
         int size = _bullets[(int)bulletType].PoolSize;
@@ -81,8 +83,8 @@ public class BulletFactory : MonoBehaviour
             size *= 2;
         }
 
-        bullet.transform.position = position;
-        bullet.transform.rotation = quaternion;
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
         bullet.SetActive(true);
 
         index = ++index % size;

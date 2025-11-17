@@ -50,4 +50,4 @@ MonoBehaviour:
   - {fileID: 1761063731729653358, guid: fe231e6c2ca94474bbc325ebe1cd690e, type: 3}
   _weights: 070000000200000001000000
   _totalWeight: 10
-  _dropRate: 1
+  _dropRate: 0.25

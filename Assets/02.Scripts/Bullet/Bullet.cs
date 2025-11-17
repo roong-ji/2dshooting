@@ -5,7 +5,6 @@ public abstract class Bullet : MonoBehaviour
 
     [Header("공격력")]
     [SerializeField] protected float _damage;
-    [SerializeField] protected float _criticalRate;
 
     protected abstract bool ShouldHit(GameObject target);
 
@@ -14,5 +13,4 @@ public abstract class Bullet : MonoBehaviour
         if (ShouldHit(collision.gameObject) == false) return;
         gameObject.SetActive(false);
     }
-
 }

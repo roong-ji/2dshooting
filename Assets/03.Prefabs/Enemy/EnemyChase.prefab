@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27a908345085d49805718682181a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0
 --- !u!50 &4574282418944773859
 Rigidbody2D:
   serializedVersion: 5
@@ -262,6 +263,7 @@ MonoBehaviour:
   _maxHealth: 100
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _score: 100
+  _roundScore: 10000
 --- !u!95 &9123266029344938536
 Animator:
   serializedVersion: 7

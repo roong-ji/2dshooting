@@ -20,8 +20,11 @@ public class PlayerFireComponent : FireComponent
         if (1f / _fireSpeed > _timer) return;
 
         // 총알 발사
-        BulletFactory.Instance.MakeBullet(_bulletType[_bulletIndex], _firePosition[0].position, _fireRotation[0]);
-        BulletFactory.Instance.MakeBullet(_bulletType[_bulletIndex], _firePosition[1].position, _fireRotation[1]);
+        foreach (var firePosition in _firePosition)
+        {
+            if (firePosition == null) return;
+            BulletFactory.Instance.MakeBullet(_bulletType[_bulletIndex], firePosition);
+        }
 
         // 다음 총알 장전
         _bulletIndex = ++_bulletIndex % _bulletType.Length;

@@ -23,11 +23,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text _bestScoreTextUI;
     [SerializeField] private Text _currentScoreTextUI;
 
-    private UserData _userData;
-    private const string DATA_KEY = "PlayerData";
-
     private int _bestScore = 0;
     private int _currentScore = 0;
+    private int _totalScore = 0;
     
     private float _textScore = 0;
     private float _textBestScore = 0;
@@ -40,10 +38,12 @@ public class ScoreManager : MonoBehaviour
     private const string CURRENT = "현재";
     private const string BEST = "최고";
 
-    private void Start()
+    public int TotalScore => _totalScore;
+    public int CurrentScore => _currentScore;
+
+    public void InitScore(int bestScore)
     {
-        _userData = LoadData();
-        _bestScore = _userData.BestScore;
+        _bestScore = bestScore;
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
     }
@@ -53,9 +53,10 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.S))
         {
-            _userData.BestScore = 0;
-            SaveData(_userData);
-            Debug.Log($"최고 점수 초기화");
+            _bestScore = 0;
+            _currentScore = 0;
+            _totalScore = 0;
+            Debug.Log($"점수 초기화");
         }
 #endif
 
@@ -84,6 +85,7 @@ public class ScoreManager : MonoBehaviour
     {
         _timer = 0f;
         _currentScore += score;
+        _totalScore += score;
         _currentScoreTextUI.rectTransform.localScale = _originScale * MAX_SACLE;
 
         //_currentScoreTextUI.rectTransform.DOScale(_originScale, _lerpTime);
@@ -91,24 +93,10 @@ public class ScoreManager : MonoBehaviour
         if (_bestScore > _currentScore) return;
         _bestScoreTextUI.rectTransform.localScale = _originScale * MAX_SACLE;
         _bestScore = _currentScore;
-
-        _userData.BestScore = _bestScore;
-        SaveData(_userData);
     }
 
-    private void SaveData(UserData data)
+    public void PayScore(int cost)
     {
-        string jsonData = JsonUtility.ToJson(data);
-
-        PlayerPrefs.SetString(DATA_KEY, jsonData);
-        PlayerPrefs.Save();
-    }
-
-    private UserData LoadData()
-    {
-        if (PlayerPrefs.HasKey(DATA_KEY) == false) return new UserData();
-
-        string jsonData = PlayerPrefs.GetString(DATA_KEY);
-        return JsonUtility.FromJson<UserData>(jsonData);
+        _currentScore -= cost;
     }
 }

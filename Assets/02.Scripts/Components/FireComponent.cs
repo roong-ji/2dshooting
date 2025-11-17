@@ -4,7 +4,6 @@ public abstract class FireComponent : MonoBehaviour
 {
     [Header("발사 위치")]
     [SerializeField] protected Transform[] _firePosition;
-    [SerializeField] protected Quaternion[] _fireRotation;
 
     protected float _timer = 0f;
 

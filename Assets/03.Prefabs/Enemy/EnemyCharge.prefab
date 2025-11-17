@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27a908345085d49805718682181a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0
 --- !u!114 &8937453123069356470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +215,7 @@ MonoBehaviour:
   _maxHealth: 100
   _itemDropper: {fileID: 332701353941808934, guid: 22eb7b36b6d2a7942ae3a2437d60553f, type: 3}
   _score: 100
+  _roundScore: 10000
 --- !u!114 &-1666855622657628985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,8 +275,7 @@ MonoBehaviour:
   _firePosition:
   - {fileID: 4841507379498257535}
   - {fileID: 6341783732567875944}
-  _fireRotation: []
-  _fireSpeed: 0.6
+  _fireSpeed: 0.4
   _bulletType: 2
 --- !u!95 &6028738445654575739
 Animator:
