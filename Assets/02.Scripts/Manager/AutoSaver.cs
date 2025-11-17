@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AutoSavor : MonoBehaviour
+public class AutoSaver : MonoBehaviour
 {
     private UserData _userData;
     private const string DATA_KEY = "PlayerData";
@@ -8,7 +8,7 @@ public class AutoSavor : MonoBehaviour
     private void Start()
     {
         _userData = LoadData();
-        ScoreManager.Instance.InitScore(_userData.BestScore);
+        ScoreManager.Instance.InitScore(_userData.BestScore, _userData.TotalScore);
         DamageManager.Instance.InitDamage(_userData.Damage);
     }
 
@@ -27,6 +27,10 @@ public class AutoSavor : MonoBehaviour
 
     private void SaveData()
     {
+        _userData.BestScore = ScoreManager.Instance.BestScore;
+        _userData.TotalScore = ScoreManager.Instance.TotalScore;
+        _userData.Damage = DamageManager.Instance.Damage;
+
         string jsonData = JsonUtility.ToJson(_userData);
 
         PlayerPrefs.SetString(DATA_KEY, jsonData);

@@ -38,12 +38,14 @@ public class ScoreManager : MonoBehaviour
     private const string CURRENT = "현재";
     private const string BEST = "최고";
 
+    public int BestScore => _bestScore;
     public int TotalScore => _totalScore;
     public int CurrentScore => _currentScore;
 
-    public void InitScore(int bestScore)
+    public void InitScore(int bestScore, int totalScore)
     {
         _bestScore = bestScore;
+        _totalScore = totalScore;
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _bestScoreTextUI.text = $"최고 점수 : {_bestScore}";
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4627569050234234588}
   - component: {fileID: 6090756605408612844}
   m_Layer: 0
-  m_Name: BossSpiralBullet
+  m_Name: BossSmallBullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,10 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 989744645609421473}
-  _speed: 1
+  _speed: 5
   _direction: {x: 0, y: 0}
-  _speedAcceleration: 0.5
-  _spiralDuration: 5
 --- !u!58 &4627569050234234588
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,4 +182,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 5
-  _criticalRate: 0

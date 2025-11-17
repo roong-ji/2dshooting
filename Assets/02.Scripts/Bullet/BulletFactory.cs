@@ -9,7 +9,7 @@ public enum EBulletType
     EnemyBullet = 2,
     PetBullet = 3,
     BossBullet = 4,
-    BossSqiralBullet = 5,
+    BossSmallBullet = 5,
 }
 
 [Serializable]

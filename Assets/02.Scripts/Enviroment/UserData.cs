@@ -5,12 +5,14 @@ using UnityEngine;
 public class UserData
 {
     public int BestScore;
+    public int TotalScore;
     public float Damage;
 
     public UserData()
     {
         BestScore = 0;
-        Damage = DamageManager.Instance.Damage;
+        TotalScore = 0;
+        Damage = 100f;
     }
 
 }
